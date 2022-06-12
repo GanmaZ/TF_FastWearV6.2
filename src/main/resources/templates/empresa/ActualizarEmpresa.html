@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="master/master :: head">
+<meta charset="ISO-8859-1">
+<title>Editar Empresa</title>
+</head>
+<body background="/images/banner-img.jpg">
+
+	<header th:replace="master/master :: header"></header>
+	<br>
+	<div>
+		<h1 align="center">Editar Empresa</h1>
+	</div>
+	<br>
+	<div class="container">
+		<div>
+			<form th:action="@{/empresas/modificar}" th:object="${emps}"
+				method="post">
+				<div class="col-sm-5">
+					<label class="form-label">Id: </label> <input type="text"
+						th:field="*{idEmpresa}" class="form-control" readonly="readonly"></input>
+				</div>
+
+				<div class="col-sm-5">
+					<label class="form-label">Nombre de Empresa: </label> <input
+						type="text" th:field="*{nombreEmpresa}" class="form-control"
+						placeholder="Digite su nombre" pattern="[A-Za-z]+"
+						required="required"></input>
+				</div>
+				<div class="col-sm-5">
+					<label class="form-label">Numero de Ruc de Empresa: </label> <input
+						type="text" th:field="*{ruc}" class="form-control"
+						placeholder="Digite su numero de ruc" required="required"
+						pattern="[0-9]{11}"
+						oninvalid="setCustomValidity('Debe contener 11 digitos')"
+						onchange="try{setCustomValidity('')}catch(e){}"></input>
+				</div>
+
+				<div class="col-sm-5">
+					<label class="form-label">Sede de la empresa: </label> <input
+						type="text" th:field="*{sedeEmpresa}" class="form-control"
+						placeholder="Digite su sede" required="required"></input>
+				</div>
+				<div class="col-sm-5">
+					<label class="form-label">Telefono de la empresa: </label> <input
+						type="text" th:field="*{telefonoEmpresa}" class="form-control"
+						placeholder="Digite su telefono" required="required"></input>
+				</div>
+				<div class="col-sm-5">
+					<label class="form-label">Direccion de la empresa: </label> <input
+						type="text" th:field="*{direccionEmpresa}" class="form-control"
+						placeholder="Digite su direccion" required="required"></input>
+				</div>
+				<div class="col-sm-5">
+					<label class="form-label">Correo de la empresa: </label> <input
+						type="email" th:field="*{correoEmpresa}" class="form-control"
+						placeholder="Digite su correo" required="required"
+						pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}"></input>
+				</div>
+				<div class="col-sm-5">
+					<label class="form-label">Clave de la empresa: </label> <input
+						type="text" th:field="*{claveEmpresa}" class="form-control"
+						placeholder="Digite su clave" required="required"></input>
+				</div>
+				<br>
+				<div class="col-sm-5">
+					<input type="submit" value="Actualizar" class="btn btn-dark"></input>
+				</div>
+
+
+			</form>
+		</div>
+
+	</div>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<footer th:replace="master/master :: footer"></footer>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="master/master :: head">
+<meta charset="UTF-8">
+<title>Listar tallas</title>
+</head>
+<body background="/images/banner-img.jpg">
+	<header th:replace="master/master :: header"></header>
+	<br>
+	<div>
+		<h1 align="center">Listar tallas</h1>
+	</div>
+	<br>
+	<div class="container text-center">
+		<table class="table table-primary">
+			<thead class="table-dark">
+				<tr>
+					<th>ID</th>
+					<th>Nombre</th>
+					<th>Operación</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="talla : ${listaTallas}">
+					<td th:text="${talla.idTalla}"></td>
+					<td th:text="${talla.nombreTalla}"></td>
+					<td><a class="btn btn-primary"
+						th:href="@{'/tallas/irmodificar/'+${talla.idTalla}}">Editar</a>
+						&nbsp; <a class="btn btn-danger"
+						th:href="@{/tallas/eliminar?id=}+${talla.idTalla}">Eliminar</a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<br>
+	<footer th:replace="master/master :: footer"></footer>
+</body>
+</html>

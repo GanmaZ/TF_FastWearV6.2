@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="master/master :: head">
+<meta charset="ISO-8859-1">
+<title>Registrar talla</title>
+</head>
+<body background="/images/banner-img.jpg">
+	<header th:replace="master/master :: header"></header>
+	<br>
+	<div>
+		<h1 align="center">Registrar talla</h1>
+	</div>
+	<br>
+	<div class="container">
+		<div>
+			<form th:action="@{/tallas/guardar}" th:object="${emp}" method="post">
+			<!--
+				<div class="col-sm-5">
+					<label class="form-label">Id: </label> <input type="text"
+						th:field="*{idTalla}" class="form-control" readonly="readonly"></input>
+				</div>
+-->
+				<div class="col-sm-5">
+					<label class="form-label">Nombre de Talla: </label> <input
+						type="text" th:field="*{nombreTalla}" class="form-control"
+						placeholder="Digite una talla" pattern="[A-Za-z]+" required="required"></input>
+				</div>
+				<br>
+				<div class="col-sm-5">
+					<input type="submit" value="Registrar" class="btn btn-dark"></input>
+				</div>
+
+
+			</form>
+		</div>
+
+	</div>
+	<br>
+	<footer th:replace="master/master :: footer"></footer>
+</body>
+</html>

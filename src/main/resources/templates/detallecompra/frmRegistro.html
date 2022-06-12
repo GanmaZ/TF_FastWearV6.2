@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="master/master :: head">
+<meta charset="UTF-8">
+<title>Registro DetalleCompra</title>
+</head>
+<body background="/images/banner-img.jpg">
+	<header th:replace="master/master :: header"></header>
+	<br>
+	<div>
+		<h1 align="center">Registro de Detalle de Compra</h1>
+	</div>
+	<br>
+	<div class="container">
+		<div>
+			<form th:action="@{/detallecompras/guardar}" th:object="${detallecompra}"
+				method="post">
+				
+				<div class="col-sm-5">
+					<label class="form-label">Importe:</label> <input
+						type="text" th:field="*{Importe}" class="form-control"
+						placeholder="Importe" required="required"
+						pattern="[0-9]+(\.[0-9][0-9]?)?"></input>
+				</div>
+				<div class="col-sm-5">
+					<label class="form-label">Cantidad:</label> <input
+						type="text" th:field="*{Cantidad}" class="form-control"
+						placeholder="Cantidad" required="required"
+						pattern="[0-9]+(\.[0-9][0-9]?)?"></input>
+				</div>
+				
+				
+				<div class="col-sm-5">
+					<label class="form-label">Compra:</label> <select name="selectCompra"
+						class="form-control" th:field="*{compra.IdCompra}">
+						<option th:each="Compra: ${listaCompras}"
+							th:value="${Compra.IdCompra}" th:text="${Compra.idCompra}"
+							th:selected="(${Compra.IdCompra}) == *{Compra.idCompra}"></option>
+					</select>
+				</div>
+				<div class="col-sm-5">
+					<label class="form-label">Producto:</label> <select
+						name="selectProducto" class="form-control"
+						th:field="*{producto.IdProducto}">
+						<option th:each="Producto: ${listaProductos}"
+							th:value="${Producto.IdProducto}"
+							th:text="${Producto.NombreProducto}"
+							th:selected="(${Producto.IdProducto}) == *{producto.IdProducto}"></option>
+					</select>
+				</div>
+				
+				<br>
+				<div class="col-sm-5">
+					<input type="submit" value="Registrar" class="btn btn-dark"></input>
+				</div>
+			</form>
+		</div>
+	</div>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<footer th:replace="master/master :: footer"></footer>
+</body>
+</html>

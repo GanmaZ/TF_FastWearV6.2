@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="master/master :: head">
+<meta charset="ISO-8859-1">
+<title>Editar Ciudad</title>
+</head>
+<body background="/images/banner-img.jpg">
+	<header th:replace="master/master :: header"></header>
+	<br>
+	<div>
+		<h1 align="center">Editar Ciudad</h1>
+	</div>
+	<br>
+	<div class="container">
+		<div>
+
+			<form th:action="@{/ciudades/modificar}" th:object="${ciud}"
+				method="post">
+			
+				<div class="col-sm-5">
+					<label class="form-label">Id: </label> <input type="text"
+						th:field="*{idCiudad}" class="form-control" readonly="readonly"></input>
+				</div>
+			
+				<div class="col-sm-5">
+					<label class="form-label">Nombre: </label> <input type="text"
+						th:field="*{NameCiudad}" class="form-control" pattern="[A-Za-z]+" required="required"></input>
+				</div>
+				<br>
+				<div class="col-sm-5">
+					<input type="submit" value="Actualizar" class="btn btn-dark"></input>
+				</div>
+
+			</form>
+		</div>
+	</div>
+	<br>
+	<footer th:replace="master/master :: footer"></footer>
+</body>
+</html>

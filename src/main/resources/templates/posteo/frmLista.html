@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="master/master :: head">
+<meta charset="UTF-8">
+<title>Lista de Posteos</title>
+</head>
+<body background="/images/banner-img.jpg">
+	<header th:replace="master/master :: header"></header>
+	<br>
+	<div>
+		<h1 align="center">Lista de Posteos</h1>
+	</div>
+	<br>
+	<div class="container text-center">
+		<table class="table table-primary">
+			<thead class="table-dark">
+				<tr>
+					<th scope="col">ID</th>
+					<th scope="col">Descripción del posteo</th>
+					<th scope="col">Fecha de Posteo</th>
+					<th scope="col">Cantidad de reacciones</th>
+					<th scope="col">Usuario</th>
+					<th scope="col">Empresa</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="posteo: ${listaPosteos}">
+					<td th:text="${posteo.IdPosteo}"></td>
+					<td th:text="${posteo.DescripcionPosteo}"></td>
+					<td th:text="${#dates.format(posteo.FechaPosteo,'dd/MM/yyyy')}"></td>
+					<td th:text="${posteo.CantidadReaccion}"></td>
+					<td th:text="${posteo.usuario.nombreUsuario}"></td>
+					<td th:text="${posteo.empresa.nombreEmpresa}"></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<br>
+	<footer th:replace="master/master :: footer"></footer>
+</body>
+</html>

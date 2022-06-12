@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="master/master :: head">
+<meta charset="UTF-8">
+<title>Registro Posteo</title>
+</head>
+<body background="/images/banner-img.jpg">
+	<header th:replace="master/master :: header"></header>
+	<br>
+	<div>
+		<h1 align="center">Registro de Posteo</h1>
+	</div>
+	<br>
+	<div class="container">
+		<div>
+			<form th:action="@{/posteos/guardar}" th:object="${posteo}"
+				method="post">
+				<!--
+				<div class="col-sm-5">
+					<label class="form-label">Id:</label> <input type="text"
+						th:field="*{IdProducto}" class="form-control" readonly="readonly"></input>
+				</div>
+				-->
+				<div class="col-sm-5">
+					<label class="form-label">Descripcion del posteo:</label> <input
+						type="text" th:field="*{DescripcionPosteo}" class="form-control"
+						placeholder="Opine" required="required"
+						pattern="[A-Za-z ]+"></input>
+				</div>
+				<div class="col-sm-5">
+					<label class="form-label">Fecha de posteo:</label> <input
+						type="date" th:field="*{FechaPosteo}"
+						placeholder="Fecha de posteo"
+						class="form-control" required="required"></input>
+				</div>
+				<div class="col-sm-5">
+					<label class="form-label">Cantidad de Reacciones:</label> <input
+						type="text" th:field="*{CantidadReaccion}"
+						placeholder="Cantidad de reacciones" class="form-control"
+						pattern="[0-9]+(\.[0-9][0-9]?)?" required="required"></input>
+				</div>
+				
+				<div class="col-sm-5">
+					<label class="form-label">Usuario:</label> <select name="selectUsuario"
+						class="form-control" th:field="*{usuario.IdUsuario}">
+						<option th:each="Usuario: ${listaUsuarios}"
+							th:value="${Usuario.IdUsuario}" th:text="${Usuario.nombreUsuario}"
+							th:selected="(${Usuario.IdUsuario}) == *{usuario.IdUsuario}"></option>
+					</select>
+				</div>
+				<div class="col-sm-5">
+					<label class="form-label">Empresa:</label> <select
+						name="selectEmpresa" class="form-control"
+						th:field="*{empresa.IdEmpresa}">
+						<option th:each="Empresa: ${listaEmpresas}"
+							th:value="${Empresa.IdEmpresa}"
+							th:text="${Empresa.nombreEmpresa}"
+							th:selected="(${Empresa.IdEmpresa}) == *{empresa.IdEmpresa}"></option>
+					</select>
+				</div>
+				
+				<br>
+				<div class="col-sm-5">
+					<input type="submit" value="Registrar" class="btn btn-dark"></input>
+				</div>
+			</form>
+		</div>
+	</div>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<footer th:replace="master/master :: footer"></footer>
+</body>
+</html>

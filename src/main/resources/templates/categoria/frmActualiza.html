@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="master/master :: head">
+<meta charset="ISO-8859-1">
+<title>Actualizar Categoria</title>
+</head>
+<body background="/images/banner-img.jpg">
+	<header th:replace="master/master :: header"></header>
+	<br>
+	<div>
+		<h1 align="center">Actualizar Categoria</h1>
+	</div>
+	<br>
+	<div class="container">
+		<div>
+			<form th:action="@{/categorias/modificar}" th:object="${cats}"
+				method="post">
+
+				<div class="col-sm-5">
+					<label class="form-label">Id:</label> <input type="text"
+						th:field="*{IdCategoria}" class="form-control" readonly="readonly"></input>
+				</div>
+				<div class="col-sm-5">
+					<label class="form-label">Nombre de Categoria:</label> <input
+						type="text" th:field="*{NombreCategoria}" class="form-control"
+						required="required" pattern="[A-Za-z]+"></input>
+				</div>
+
+				<div class="col-sm-5">
+					<label class="form-label">Descripcion de Categoria:</label> <input
+						type="text" th:field="*{DescripcionCategoria}"
+						class="form-control"></input>
+				</div>
+				<br>
+				<div class="col-sm-5">
+					<input type="submit" value="Actualizar" class="btn btn-dark"></input>
+				</div>
+			</form>
+		</div>
+	</div>
+	<br>
+	<footer th:replace="master/master :: footer"></footer>
+</body>
+
+
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="master/master :: head">
+<meta charset="UTF-8">
+<title>Lista de DetalleCompra</title>
+</head>
+<body background="/images/banner-img.jpg">
+	<header th:replace="master/master :: header"></header>
+	<br>
+	<div>
+		<h1 align="center">Lista de DetalleCompra</h1>
+	</div>
+	<br>
+	<div class="container text-center">
+		<table class="table table-primary">
+			<thead class="table-dark">
+				<tr>
+					<th scope="col">ID</th>
+					<th scope="col">Importe</th>
+					<th scope="col">Cantidad</th>
+					<th scope="col">Compra</th>
+					<th scope="col">Producto</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="detallecompra: ${listaDetallecompras}">
+					<td th:text="${detallecompra.IdDetalleCompra}"></td>
+					<td th:text="${detallecompra.Importe}"></td>
+					<td th:text="${detallecompra.Cantidad}"></td>
+					<td th:text="${detallecompra.compra.IdCompra}"></td>
+					<td th:text="${detallecompra.producto.NombreProducto}"></td>
+					
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<br>
+	<footer th:replace="master/master :: footer"></footer>
+</body>
+</html>

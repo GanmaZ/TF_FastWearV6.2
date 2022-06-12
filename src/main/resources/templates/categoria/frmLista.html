@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="master/master :: head">
+<meta charset="UTF-8">
+<title>Lista de Categorias</title>
+</head>
+<body background="/images/banner-img.jpg">
+	<header th:replace="master/master :: header"></header>
+	<br>
+	<div>
+		<h1 align="center">Lista de Categorias</h1>
+	</div>
+	<br>
+	<div class="container text-center">
+		<table class="table table-primary">
+			<thead class="table-dark">
+				<tr>
+					<th scope="col">ID</th>
+					<th scope="col">Nombre de Categoria</th>
+					<th scope="col">Descripcion de Categoria</th>
+					<th scope="col">Operacion</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="categoria: ${listaCategorias}">
+					<td th:text="${categoria.IdCategoria}"></td>
+					<td th:text="${categoria.NombreCategoria}"></td>
+					<td th:text="${categoria.DescripcionCategoria}"></td>
+					<td><a class="btn btn-primary"
+						th:href="@{'/categorias/irmodificar/' + ${categoria.IdCategoria}}">Editar</a>
+						&nbsp; <a class="btn btn-danger"
+						th:href="@{/categorias/eliminar?id=} + ${categoria.IdCategoria}">Eliminar</a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<br>
+	<footer th:replace="master/master :: footer"></footer>
+</body>
+</html>

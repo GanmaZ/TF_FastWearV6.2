@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="master/master :: head">
+<meta charset="ISO-8859-1">
+<title>Registrar Categoria</title>
+</head>
+<body background="/images/banner-img.jpg">
+	<header th:replace="master/master :: header"></header>
+	<br>
+	<div>
+		<h1 align="center">Registrar CategoriaProducto</h1>
+	</div>
+	<br>
+	<div class="container">
+		<div>
+			<form th:action="@{/categoriaproductos/guardar}" th:object="${cp}"
+				method="post">
+				<!--
+				<div class="col-sm-5">
+					<label class="form-label">Id: </label> <input type="text"
+						th:field="*{idCategoriaProducto}" class="form-control" readonly="readonly"></input>
+				</div>
+-->
+				<div class="col-sm-5">
+					<label class="form-label">Categoria: </label> <select
+						name="selectPerson" class="form-control"
+						th:field="*{categoria.idCategoria}">
+						<option th:each="c: ${listaCategorias}" th:value="${c.idCategoria}"
+							th:text="${c.nombreCategoria}"
+							th:selected="(${c.idCategoria}==*{categoria.idCategoria})"></option>
+					</select>
+				</div>
+				<div class="col-sm-5">
+					<label class="form-label">Producto: </label> <select
+						name="selectPerson" class="form-control"
+						th:field="*{producto.IdProducto}">
+						<option th:each="p: ${listaProductos}" th:value="${p.IdProducto}"
+							th:text="${p.NombreProducto}"
+							th:selected="(${p.IdProducto}==*{producto.IdProducto})"></option>
+					</select>
+				</div>
+
+
+				<br>
+				<div class="col-sm-5">
+					<input type="submit" value="Registrar" class="btn btn-dark"></input>
+				</div>
+
+
+			</form>
+		</div>
+
+	</div>
+	<br>
+	<footer th:replace="master/master :: footer"></footer>
+</body>
+</html>

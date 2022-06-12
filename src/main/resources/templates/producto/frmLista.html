@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="master/master :: head">
+<meta charset="UTF-8">
+<title>Lista de Productos</title>
+</head>
+<body background="/images/banner-img.jpg">
+	<header th:replace="master/master :: header"></header>
+	<br>
+	<div>
+		<h1 align="center">Lista de Productos</h1>
+	</div>
+	<br>
+	<div class="container text-center">
+		<table class="table table-primary">
+			<thead class="table-dark">
+				<tr>
+					<th scope="col">ID</th>
+					<th scope="col">Nombre de Producto</th>
+					<th scope="col">Descripcion de Producto</th>
+					<th scope="col">Precio</th>
+					<th scope="col">Fecha de Produccion</th>
+					<th scope="col">Marca</th>
+					<th scope="col">Empresa</th>
+					<th scope="col">Tipo</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="producto: ${listaProductos}">
+					<td th:text="${producto.IdProducto}"></td>
+					<td th:text="${producto.NombreProducto}"></td>
+					<td th:text="${producto.DescripcionProducto}"></td>
+					<td th:text="${producto.PrecioProducto}"></td>
+					<td th:text="${#dates.format(producto.AnioProduccion,'dd/MM/yyyy')}"></td>
+					<td th:text="${producto.marca.nombreMarca}"></td>
+					<td th:text="${producto.empresa.nombreEmpresa}"></td>
+					<td th:text="${producto.tipoProducto.NombreTipoProducto}"></td>
+					
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<br>
+	<footer th:replace="master/master :: footer"></footer>
+</body>
+</html>

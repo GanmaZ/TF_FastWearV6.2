@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="master/master :: head">
+<meta charset="UTF-8">
+<title>Listar Ciudades</title>
+</head>
+<body background="/images/banner-img.jpg">
+
+	<header th:replace="master/master :: header"></header>
+	<br>
+	<div>
+		<h1 align="center">Listar Ciudades</h1>
+	</div>
+	<br>
+	<div class="container text-center">
+		<table class="table table-primary">
+			<thead class="table-dark">
+				<tr>
+					<th scope="col">Id</th>
+					<th scope="col">Nombre de Ciudad</th>
+					<th scope="col">Operación</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="a:${listaCiudades}">
+					<td th:text="${a.idCiudad}"></td>
+					<td th:text="${a.NameCiudad}"></td>
+					<td><a class="btn btn-primary"
+						th:href="@{'/ciudades/irmodificar/'}+${a.idCiudad}">Editar</a>
+						&nbsp; <a class="btn btn-danger"
+						th:href="@{/ciudades/eliminar?id=}+${a.idCiudad}">Eliminar</a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<br>
+	<footer th:replace="master/master :: footer"></footer>
+</body>
+</html>

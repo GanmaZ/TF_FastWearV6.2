@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="master/master :: head">
+<meta charset="UTF-8">
+<title>Lista de Usuarios</title>
+</head>
+<body background="/images/banner-img.jpg">
+	<header th:replace="master/master :: header"></header>
+	<br>
+	<div>
+		<h1 align="center">Lista de Usuarios</h1>
+	</div>
+	<br>
+	<div class="container text-center">
+		<table class="table table-primary">
+			<thead class="table-dark">
+				<tr>
+					<th scope="col">ID</th>
+					<th scope="col">Nombre</th>
+					<th scope="col">Apellido</th>
+					<th scope="col">Correo</th>
+					<th scope="col">Clave</th>
+					<th scope="col">Telefono</th>
+					<th scope="col">Ciudad</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="usuario: ${listaUsuarios}">
+					<td th:text="${usuario.IdUsuario}"></td>
+					<td th:text="${usuario.nombreUsuario}"></td>
+					<td th:text="${usuario.apellidoUsuario}"></td>
+					<td th:text="${usuario.correoUsuario}"></td>
+					<td th:text="${usuario.claveUsuario}"></td>
+					<td th:text="${usuario.telefonoUsuario}"></td>
+					<td th:text="${usuario.ciudad.NameCiudad}"></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<br>
+	<footer th:replace="master/master :: footer"></footer>
+</body>
+</html>

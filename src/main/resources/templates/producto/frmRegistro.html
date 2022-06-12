@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="master/master :: head">
+<meta charset="UTF-8">
+<title>Registro Producto</title>
+</head>
+<body background="/images/banner-img.jpg">
+	<header th:replace="master/master :: header"></header>
+	<br>
+	<div>
+		<h1 align="center">Registro de Producto</h1>
+	</div>
+	<br>
+	<div class="container">
+		<div>
+			<form th:action="@{/productos/guardar}" th:object="${producto}"
+				method="post">
+				<!--
+				<div class="col-sm-5">
+					<label class="form-label">Id:</label> <input type="text"
+						th:field="*{IdProducto}" class="form-control" readonly="readonly"></input>
+				</div>
+				-->
+				<div class="col-sm-5">
+					<label class="form-label">Nombre del Producto:</label> <input
+						type="text" th:field="*{NombreProducto}" class="form-control"
+						placeholder="Digite el Producto" required="required"
+						pattern="[A-Za-z ]+"></input>
+				</div>
+				<div class="col-sm-5">
+					<label class="form-label">Descripcion de Producto:</label> <input
+						type="text" th:field="*{DescripcionProducto}"
+						placeholder="Digite alguna descripcion para su producto"
+						class="form-control"></input>
+				</div>
+				<div class="col-sm-5">
+					<label class="form-label">Precio del Producto:</label> <input
+						type="text" th:field="*{PrecioProducto}"
+						placeholder="Digite el precio de su producto" class="form-control"
+						pattern="[0-9]+(\.[0-9][0-9]?)?" required="required"></input>
+				</div>
+				<div class="col-sm-5">
+					<label class="form-label">Fecha de Produccion:</label> <input
+						type="date" th:field="*{AnioProduccion}"
+						placeholder="Seleccione la fecha de Produccion"
+						class="form-control" required="required"></input>
+				</div>
+				<div class="col-sm-5">
+					<label class="form-label">Marca:</label> <select name="selectMarca"
+						class="form-control" th:field="*{marca.IdMarca}">
+						<option th:each="Marca: ${listaMarcas}"
+							th:value="${Marca.IdMarca}" th:text="${Marca.nombreMarca}"
+							th:selected="(${Marca.IdMarca}) == *{marca.IdMarca}"></option>
+					</select>
+				</div>
+				<div class="col-sm-5">
+					<label class="form-label">Empresa:</label> <select
+						name="selectEmpresa" class="form-control"
+						th:field="*{empresa.IdEmpresa}">
+						<option th:each="Empresa: ${listaEmpresas}"
+							th:value="${Empresa.IdEmpresa}"
+							th:text="${Empresa.nombreEmpresa}"
+							th:selected="(${Empresa.IdEmpresa}) == *{empresa.IdEmpresa}"></option>
+					</select>
+				</div>
+				<div class="col-sm-5">
+					<label class="form-label">Tipo:</label> <select name="selectTipo"
+						class="form-control" th:field="*{tipoProducto.IdTipoProducto}">
+						<option th:each="Tipo: ${listaTipoProductos}"
+							th:value="${Tipo.IdTipoProducto}"
+							th:text="${Tipo.NombreTipoProducto}"
+							th:selected="(${Tipo.IdTipoProducto}) == *{tipoProducto.IdTipoProducto}"></option>
+					</select>
+				</div>
+				<br>
+				<div class="col-sm-5">
+					<input type="submit" value="Registrar" class="btn btn-dark"></input>
+				</div>
+			</form>
+		</div>
+	</div>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<footer th:replace="master/master :: footer"></footer>
+</body>
+</html>
