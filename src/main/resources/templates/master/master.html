@@ -135,6 +135,16 @@
 									th:href="@{/categoriaproductos/listar}">Listar</a></li>
 							</ul></li>
 
+						<li class="nav-item dropdown" sec:authorize="hasRole('ROLE_EMPRESA')"><a
+							class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+							role="button" data-bs-toggle="dropdown" aria-expanded="false"
+							style="color: #FFFFFF"> Posteo </a>
+							<ul class="dropdown-menu"
+								aria-labelledby="navbarDropdownMenuLink">
+								<li><a class="dropdown-item" th:href="@{/posteos/nuevo}">Registrar</a></li>
+								<li><a class="dropdown-item" th:href="@{/posteos/listar}">Listar</a></li>
+							</ul></li>
+
 						<li class="nav-item dropdown" sec:authorize="hasRole('ROLE_USER')"><a
 							class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 							role="button" data-bs-toggle="dropdown" aria-expanded="false"
@@ -188,8 +198,10 @@
 							style="color: #FFFFFF"> Compra </a>
 							<ul class="dropdown-menu"
 								aria-labelledby="navbarDropdownMenuLink">
-								<li><a class="dropdown-item" th:href="@{/compras/nuevo}">Registrar compra</a></li>
-								<li><a class="dropdown-item" th:href="@{/compras/listar}">Listar compra</a></li>
+								<li><a class="dropdown-item" th:href="@{/compras/nuevo}">Registrar
+										compra</a></li>
+								<li><a class="dropdown-item" th:href="@{/compras/listar}">Listar
+										compra</a></li>
 								<li><a class="dropdown-item"
 									th:href="@{/detallecompras/nuevo}">Registrar DetalleCompra</a></li>
 								<li><a class="dropdown-item"
@@ -203,8 +215,10 @@
 							style="color: #FFFFFF"> Usuarios</a>
 							<ul class="dropdown-menu"
 								aria-labelledby="navbarDropdownMenuLink">
-								<li><a class="dropdown-item" th:href="@{/usuarios/listar}">Listar usuarios</a></li>
-								<li><a class="dropdown-item" th:href="@{/empresas/listar}">Listar empresas</a></li>
+								<li><a class="dropdown-item" th:href="@{/usuarios/listar}">Listar
+										usuarios</a></li>
+								<li><a class="dropdown-item" th:href="@{/empresas/listar}">Listar
+										empresas</a></li>
 							</ul></li>
 
 
