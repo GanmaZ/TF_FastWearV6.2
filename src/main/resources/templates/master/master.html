@@ -40,7 +40,7 @@
 					<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
 
 						<li class="nav-item dropdown"
-							sec:authorize="hasRole('ROLE_EMPRESA')"><a
+							sec:authorize="hasAnyRole('ROLE_EMPRESA','ROLE_ADMIN')"><a
 							class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 							role="button" data-bs-toggle="dropdown" aria-expanded="false"
 							style="color: #FFFFFF"> Categoria </a>
@@ -52,7 +52,7 @@
 							</ul></li>
 
 						<li class="nav-item dropdown"
-							sec:authorize="hasRole('ROLE_EMPRESA')"><a
+							sec:authorize="hasAnyRole('ROLE_EMPRESA','ROLE_ADMIN')"><a
 							class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 							role="button" data-bs-toggle="dropdown" aria-expanded="false"
 							style="color: #FFFFFF"> Talla </a>
@@ -63,7 +63,7 @@
 							</ul></li>
 
 						<li class="nav-item dropdown"
-							sec:authorize="hasRole('ROLE_EMPRESA')"><a
+							sec:authorize="hasAnyRole('ROLE_EMPRESA','ROLE_ADMIN')"><a
 							class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 							role="button" data-bs-toggle="dropdown" aria-expanded="false"
 							style="color: #FFFFFF"> Tipos de Producto </a>
@@ -87,7 +87,7 @@
 							</ul></li>
 
 						<li class="nav-item dropdown"
-							sec:authorize="hasRole('ROLE_EMPRESA')"><a
+							sec:authorize="hasAnyRole('ROLE_EMPRESA','ROLE_ADMIN')"><a
 							class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 							role="button" data-bs-toggle="dropdown" aria-expanded="false"
 							style="color: #FFFFFF"> Marcas </a>
@@ -98,7 +98,7 @@
 
 							</ul></li>
 						<li class="nav-item dropdown"
-							sec:authorize="hasRole('ROLE_EMPRESA')"><a
+							sec:authorize="hasAnyRole('ROLE_EMPRESA','ROLE_ADMIN')"><a
 							class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 							role="button" data-bs-toggle="dropdown" aria-expanded="false"
 							style="color: #FFFFFF"> Productos </a>
@@ -109,7 +109,7 @@
 
 							</ul></li>
 						<li class="nav-item dropdown"
-							sec:authorize="hasRole('ROLE_EMPRESA')"><a
+							sec:authorize="hasAnyRole('ROLE_EMPRESA','ROLE_ADMIN')"><a
 							class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 							role="button" data-bs-toggle="dropdown" aria-expanded="false"
 							style="color: #FFFFFF"> TallaProducto </a>
@@ -123,7 +123,7 @@
 							</ul></li>
 
 						<li class="nav-item dropdown"
-							sec:authorize="hasRole('ROLE_EMPRESA')"><a
+							sec:authorize="hasAnyRole('ROLE_EMPRESA','ROLE_ADMIN')"><a
 							class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 							role="button" data-bs-toggle="dropdown" aria-expanded="false"
 							style="color: #FFFFFF"> CategoriaProducto </a>
@@ -135,7 +135,7 @@
 									th:href="@{/categoriaproductos/listar}">Listar</a></li>
 							</ul></li>
 
-						<li class="nav-item dropdown" sec:authorize="hasRole('ROLE_EMPRESA')"><a
+						<li class="nav-item dropdown" sec:authorize="hasAnyRole('ROLE_EMPRESA','ROLE_ADMIN','ROLE_USER')"><a
 							class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 							role="button" data-bs-toggle="dropdown" aria-expanded="false"
 							style="color: #FFFFFF"> Posteo </a>
@@ -145,17 +145,8 @@
 								<li><a class="dropdown-item" th:href="@{/posteos/listar}">Listar</a></li>
 							</ul></li>
 
-						<li class="nav-item dropdown" sec:authorize="hasRole('ROLE_USER')"><a
-							class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
-							role="button" data-bs-toggle="dropdown" aria-expanded="false"
-							style="color: #FFFFFF"> Posteo </a>
-							<ul class="dropdown-menu"
-								aria-labelledby="navbarDropdownMenuLink">
-								<li><a class="dropdown-item" th:href="@{/posteos/nuevo}">Registrar</a></li>
-								<li><a class="dropdown-item" th:href="@{/posteos/listar}">Listar</a></li>
-							</ul></li>
 
-						<li class="nav-item dropdown" sec:authorize="hasRole('ROLE_USER')"><a
+						<li class="nav-item dropdown" sec:authorize="hasAnyRole('ROLE_USER','ROLE_ADMIN')"><a
 							class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 							role="button" data-bs-toggle="dropdown" aria-expanded="false"
 							style="color: #FFFFFF"> Compra </a>
@@ -166,7 +157,7 @@
 
 							</ul></li>
 
-						<li class="nav-item dropdown" sec:authorize="hasRole('ROLE_USER')"><a
+						<li class="nav-item dropdown" sec:authorize="hasAnyRole('ROLE_USER','ROLE_ADMIN')"><a
 							class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 							role="button" data-bs-toggle="dropdown" aria-expanded="false"
 							style="color: #FFFFFF"> DetalleCompra </a>
@@ -178,48 +169,6 @@
 									th:href="@{/detallecompras/listar}">Listar</a></li>
 							</ul></li>
 
-
-						<!-- para admin extra -->
-						<li class="nav-item dropdown"
-							sec:authorize="hasRole('ROLE_ADMIN')"><a
-							class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
-							role="button" data-bs-toggle="dropdown" aria-expanded="false"
-							style="color: #FFFFFF"> Posteo </a>
-							<ul class="dropdown-menu"
-								aria-labelledby="navbarDropdownMenuLink">
-								<li><a class="dropdown-item" th:href="@{/posteos/nuevo}">Registrar</a></li>
-								<li><a class="dropdown-item" th:href="@{/posteos/listar}">Listar</a></li>
-							</ul></li>
-
-						<li class="nav-item dropdown"
-							sec:authorize="hasRole('ROLE_ADMIN')"><a
-							class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
-							role="button" data-bs-toggle="dropdown" aria-expanded="false"
-							style="color: #FFFFFF"> Compra </a>
-							<ul class="dropdown-menu"
-								aria-labelledby="navbarDropdownMenuLink">
-								<li><a class="dropdown-item" th:href="@{/compras/nuevo}">Registrar
-										compra</a></li>
-								<li><a class="dropdown-item" th:href="@{/compras/listar}">Listar
-										compra</a></li>
-								<li><a class="dropdown-item"
-									th:href="@{/detallecompras/nuevo}">Registrar DetalleCompra</a></li>
-								<li><a class="dropdown-item"
-									th:href="@{/detallecompras/listar}">Listar DetalleCompra</a></li>
-							</ul></li>
-
-						<li class="nav-item dropdown"
-							sec:authorize="hasRole('ROLE_ADMIN')"><a
-							class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
-							role="button" data-bs-toggle="dropdown" aria-expanded="false"
-							style="color: #FFFFFF"> Usuarios</a>
-							<ul class="dropdown-menu"
-								aria-labelledby="navbarDropdownMenuLink">
-								<li><a class="dropdown-item" th:href="@{/usuarios/listar}">Listar
-										usuarios</a></li>
-								<li><a class="dropdown-item" th:href="@{/empresas/listar}">Listar
-										empresas</a></li>
-							</ul></li>
 
 
 						<!-- Para login  -->

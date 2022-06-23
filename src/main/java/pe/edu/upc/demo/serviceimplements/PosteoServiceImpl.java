@@ -4,10 +4,15 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import pe.edu.upc.demo.entities.Posteo;
+import pe.edu.upc.demo.entities.Usuario;
 import pe.edu.upc.demo.repositories.IPosteoRepository;
+import pe.edu.upc.demo.repositories.IUsuarioRepository;
 import pe.edu.upc.demo.serviceinterface.IPosteoService;
 
 @Service
@@ -16,9 +21,19 @@ public class PosteoServiceImpl implements IPosteoService{
 	@Autowired
 	private IPosteoRepository poRepository;
 	
+	@Autowired
+	private IUsuarioRepository userRepository;
+	
 	@Override
 	public void insert(Posteo posteo) {
-		// TODO Auto-generated method stub
+	
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+
+		UserDetails userDetail = (UserDetails) auth.getPrincipal();
+
+		Usuario usuario = userRepository.findByCorreoUsuario(userDetail.getUsername());
+
+		posteo.setUsuario(usuario);
 		poRepository.save(posteo);
 	}
 

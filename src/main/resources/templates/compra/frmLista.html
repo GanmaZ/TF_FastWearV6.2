@@ -19,7 +19,6 @@
 					<th scope="col">Total</th>
 					<th scope="col">Fecha de Compra</th>
 					<th scope="col">Metodo de Pago</th>
-					<th scope="col">Usuario</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -28,7 +27,6 @@
 					<td th:text="${compra.Total}"></td>
 					<td th:text="${#dates.format(compra.FechaCompra,'dd/MM/yyyy')}"></td>
 					<td th:text="${compra.MetodoPago}"></td>
-					<td th:text="${compra.usuario.nombreUsuario}"></td>
 					
 				</tr>
 			</tbody>
