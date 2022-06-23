@@ -1,5 +1,6 @@
 package pe.edu.upc.demo.serviceimplements;
 
+import java.sql.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +26,12 @@ public class CompraServiceImpl implements ICompraService {
 	
 
 	@Override
-	public void insert(Compra compra) {
+	public Compra insert() {
+		Compra compra = new Compra();
+		
+		long miliseconds = System.currentTimeMillis();
+        Date date = new Date(miliseconds);
+		
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 
 		UserDetails userDetail = (UserDetails) auth.getPrincipal();
@@ -33,7 +39,10 @@ public class CompraServiceImpl implements ICompraService {
 		Usuario usuario = userRepository.findByCorreoUsuario(userDetail.getUsername());
 
 		compra.setUsuario(usuario);
+		compra.setFechaCompra(date);
 		cRepository.save(compra);
+		
+		return compra;
 	}
 
 	@Override

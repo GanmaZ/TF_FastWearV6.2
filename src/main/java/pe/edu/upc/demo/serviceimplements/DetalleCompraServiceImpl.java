@@ -6,20 +6,47 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import pe.edu.upc.demo.entities.Compra;
 import pe.edu.upc.demo.entities.DetalleCompra;
+import pe.edu.upc.demo.entities.Producto;
+import pe.edu.upc.demo.repositories.ICompraRepository;
 import pe.edu.upc.demo.repositories.IDetalleCompraRepository;
+import pe.edu.upc.demo.repositories.IProductoRepository;
 import pe.edu.upc.demo.serviceinterface.IDetalleCompraService;
 
 @Service
-public class DetalleCompraServiceImpl implements IDetalleCompraService{
+public class DetalleCompraServiceImpl implements IDetalleCompraService {
 
 	@Autowired
 	private IDetalleCompraRepository deRepository;
-	
+
+	@Autowired
+	private CompraServiceImpl cService;
+
+	@Autowired
+	private ICompraRepository cRepository;
+
+	@Autowired
+	private IProductoRepository pRepository;
+
 	@Override
 	public void insert(DetalleCompra detallecompra) {
-		// TODO Auto-generated method stub
+		Compra comp = new Compra();
+		Producto pro = new Producto();
+
+		detallecompra.setCompra(cService.insert());
+
+		comp = detallecompra.getCompra();
+
+		pro = pRepository.findByidProducto(detallecompra.getProducto().getIdProducto());
+
+		detallecompra.setImporte(pro.getPrecioProducto());
+
 		deRepository.save(detallecompra);
+
+		comp.setTotal((detallecompra.getCantidad()) * (detallecompra.getImporte()));
+
+		cRepository.save(comp);
 	}
 
 	@Override
@@ -44,6 +71,24 @@ public class DetalleCompraServiceImpl implements IDetalleCompraService{
 	public void update(DetalleCompra detallecompra) {
 		// TODO Auto-generated method stub
 		deRepository.save(detallecompra);
+	}
+
+	@Override
+	public void insertextra(DetalleCompra detallecompra) {
+		Compra comp = new Compra();
+		Producto pro = new Producto();
+
+		comp = detallecompra.getCompra();
+
+		pro = pRepository.findByidProducto(detallecompra.getProducto().getIdProducto());
+
+		detallecompra.setImporte(pro.getPrecioProducto());
+
+		deRepository.save(detallecompra);
+
+		comp.setTotal((comp.getTotal())+(detallecompra.getCantidad()) * (detallecompra.getImporte()));
+
+		cRepository.save(comp);
 	}
 
 }

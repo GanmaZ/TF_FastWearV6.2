@@ -12,4 +12,7 @@ import pe.edu.upc.demo.entities.Compra;
 public interface ICompraRepository extends JpaRepository<Compra, Integer> {
 	@Query(value = "Select * from compra where id_usuario=:id_usuario", nativeQuery = true)
 	public List<Compra> findByidUsuario(int id_usuario);
+	
+	@Query(value = "Select * from compra where id_compra=:id_compra", nativeQuery = true)
+	public Compra findByidCompra(int id_compra);
 }

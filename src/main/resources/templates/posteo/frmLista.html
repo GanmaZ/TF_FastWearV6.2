@@ -3,12 +3,18 @@
 <head th:replace="master/master :: head">
 <meta charset="UTF-8">
 <title>Lista de Posteos</title>
+<link rel="stylesheet" type="text/css" href="static/css/estilos.css"
+	th:href="@{/css/estilos.css}">
 </head>
 <body background="/images/banner-img.jpg">
 	<header th:replace="master/master :: header"></header>
 	<br>
 	<div>
 		<h1 align="center">Lista de Posteos</h1>
+	</div>
+	<br>
+	<div align="center">
+		<a class="boton" th:href="@{/posteos/nuevo}">Nuevo</a>
 	</div>
 	<br>
 	<div class="container text-center">
@@ -20,6 +26,7 @@
 					<th scope="col">Fecha de Posteo</th>
 					<th scope="col">Cantidad de reacciones</th>
 					<th scope="col">Usuario</th>
+					<th scope="col">Valoracion</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -29,6 +36,11 @@
 					<td th:text="${#dates.format(posteo.FechaPosteo,'dd/MM/yyyy')}"></td>
 					<td th:text="${posteo.CantidadReaccion}"></td>
 					<td th:text="${posteo.usuario.NombreUsuario}"></td>
+					<td><a class="btn btn-primary"
+						th:href="@{'/posteos/reaccionp/'} + ${posteo.IdPosteo}">Me
+							Gusta</a>&nbsp; <a class="btn btn-danger"
+						th:href="@{'/posteos/reaccionn/'} + ${posteo.IdPosteo}">No me
+							Gusta</a></td>
 				</tr>
 			</tbody>
 		</table>

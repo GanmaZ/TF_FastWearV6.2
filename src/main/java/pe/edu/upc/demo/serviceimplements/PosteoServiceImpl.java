@@ -1,5 +1,6 @@
 package pe.edu.upc.demo.serviceimplements;
 
+import java.sql.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -26,6 +27,9 @@ public class PosteoServiceImpl implements IPosteoService{
 	
 	@Override
 	public void insert(Posteo posteo) {
+		
+		long miliseconds = System.currentTimeMillis();
+        Date date = new Date(miliseconds);
 	
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 
@@ -34,6 +38,7 @@ public class PosteoServiceImpl implements IPosteoService{
 		Usuario usuario = userRepository.findByCorreoUsuario(userDetail.getUsername());
 
 		posteo.setUsuario(usuario);
+		posteo.setFechaPosteo(date);
 		poRepository.save(posteo);
 	}
 

@@ -6,7 +6,8 @@ import pe.edu.upc.demo.entities.Compra;
 
 public interface ICompraService {
 	
-	public void insert(Compra compra);
+	public Compra insert();
 	
 	List<Compra> list();
+
 }

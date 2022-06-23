@@ -152,22 +152,11 @@
 							style="color: #FFFFFF"> Compra </a>
 							<ul class="dropdown-menu"
 								aria-labelledby="navbarDropdownMenuLink">
-								<li><a class="dropdown-item" th:href="@{/compras/nuevo}">Registrar</a></li>
+								<li><a class="dropdown-item" th:href="@{/detallecompras/nuevo}">Registrar</a></li>
 								<li><a class="dropdown-item" th:href="@{/compras/listar}">Listar</a></li>
 
 							</ul></li>
 
-						<li class="nav-item dropdown" sec:authorize="hasAnyRole('ROLE_USER','ROLE_ADMIN')"><a
-							class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
-							role="button" data-bs-toggle="dropdown" aria-expanded="false"
-							style="color: #FFFFFF"> DetalleCompra </a>
-							<ul class="dropdown-menu"
-								aria-labelledby="navbarDropdownMenuLink">
-								<li><a class="dropdown-item"
-									th:href="@{/detallecompras/nuevo}">Registrar</a></li>
-								<li><a class="dropdown-item"
-									th:href="@{/detallecompras/listar}">Listar</a></li>
-							</ul></li>
 
 
 
