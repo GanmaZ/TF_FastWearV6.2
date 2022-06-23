@@ -55,12 +55,12 @@
 				</div>
 				<div class="col-sm-5">
 					<label class="form-label">Empresa:</label> <select
-						name="selectEmpresa" class="form-control"
-						th:field="*{empresa.IdEmpresa}">
-						<option th:each="Empresa: ${listaEmpresas}"
-							th:value="${Empresa.IdEmpresa}"
-							th:text="${Empresa.nombreEmpresa}"
-							th:selected="(${Empresa.IdEmpresa}) == *{empresa.IdEmpresa}"></option>
+						name="selectUsuario" class="form-control"
+						th:field="*{usuario.IdUsuario}">
+						<option th:each="Empresa: ${listaUsuarios}"
+							th:value="${Usuario.IdUsuario}"
+							th:text="${Usuario.nombreUsuario}"
+							th:selected="(${Usuario.IdUsuario}) == *{usuario.IdUsuario}"></option>
 					</select>
 				</div>
 				<div class="col-sm-5">

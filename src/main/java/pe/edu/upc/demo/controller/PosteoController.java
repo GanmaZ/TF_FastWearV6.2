@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import pe.edu.upc.demo.entities.Posteo;
-import pe.edu.upc.demo.serviceinterface.IEmpresaService;
 import pe.edu.upc.demo.serviceinterface.IPosteoService;
 import pe.edu.upc.demo.serviceinterface.IUsuarioService;
 
@@ -28,16 +27,12 @@ public class PosteoController {
 	private IUsuarioService uService;
 	
 	@Autowired
-	private IEmpresaService eService;
-	
-	@Autowired
 	private IPosteoService pService;
 	
 	@GetMapping("/nuevo")
 	public String newPosteo(Model model) {
 		model.addAttribute("posteo", new Posteo());
 		model.addAttribute("listaUsuarios", uService.list());
-		model.addAttribute("listaEmpresas", eService.list());
 		
 		return "/posteo/frmRegistro";
 	}

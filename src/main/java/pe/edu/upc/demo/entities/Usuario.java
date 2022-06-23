@@ -22,25 +22,37 @@ public class Usuario {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int IdUsuario;
 
-	@Column(name = "nombreUsuario", nullable = false, length = 60)
-	private String nombreUsuario;
+	@Column(name = "NombreUsuario", nullable = true, length = 60)
+	private String NombreUsuario;
 
-	@Column(name = "apellidoUsuario", nullable = false, length = 60)
-	private String apellidoUsuario;
+	@Column(name = "ApellidoUsuario", nullable = true, length = 60)
+	private String ApellidoUsuario;
 
-	@Column(name = "correoUsuario", nullable = false, length = 60)
+	@Column(name = "correoUsuario", nullable = true, length = 60)
 	private String correoUsuario;
 
-	@Column(name = "claveUsuario", nullable = false, length = 60)
+	@Column(name = "claveUsuario", nullable = true, length = 60)
 	private String claveUsuario;
 
 	private Boolean enabled;
 
-	@Column(name = "telefonoUsuario", nullable = false, length = 60)
-	private String telefonoUsuario;
+	@Column(name = "Telefono", nullable = true, length = 60)
+	private String Telefono;
+
+	@Column(name = "NombreEmpresa", nullable = true, length = 47)
+	private String NombreEmpresa;
+
+	@Column(name = "RUC", nullable = true, length = 11)
+	private String RUC;
+
+	@Column(name = "SedeEmpresa", nullable = true, length = 47)
+	private String SedeEmpresa;
+
+	@Column(name = "DireccionEmpresa", nullable = true, length = 47)
+	private String DireccionEmpresa;
 
 	@ManyToOne
-	@JoinColumn(name = "IdCiudad", nullable = false)
+	@JoinColumn(name = "IdCiudad", nullable = true)
 	private Ciudad ciudad;
 
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
@@ -53,15 +65,20 @@ public class Usuario {
 	}
 
 	public Usuario(int idUsuario, String nombreUsuario, String apellidoUsuario, String correoUsuario,
-			String claveUsuario, Boolean enabled, String telefonoUsuario, Ciudad ciudad, List<Role> roles) {
+			String claveUsuario, Boolean enabled, String telefono, String nombreEmpresa, String rUC, String sedeEmpresa,
+			String direccionEmpresa, Ciudad ciudad, List<Role> roles) {
 		super();
-		this.IdUsuario = idUsuario;
-		this.nombreUsuario = nombreUsuario;
-		this.apellidoUsuario = apellidoUsuario;
+		IdUsuario = idUsuario;
+		this.NombreUsuario = nombreUsuario;
+		this.ApellidoUsuario = apellidoUsuario;
 		this.correoUsuario = correoUsuario;
 		this.claveUsuario = claveUsuario;
 		this.enabled = enabled;
-		this.telefonoUsuario = telefonoUsuario;
+		this.Telefono = telefono;
+		this.NombreEmpresa = nombreEmpresa;
+		this.RUC = rUC;
+		this.SedeEmpresa = sedeEmpresa;
+		this.DireccionEmpresa = direccionEmpresa;
 		this.ciudad = ciudad;
 		this.roles = roles;
 	}
@@ -75,19 +92,19 @@ public class Usuario {
 	}
 
 	public String getNombreUsuario() {
-		return nombreUsuario;
+		return NombreUsuario;
 	}
 
 	public void setNombreUsuario(String nombreUsuario) {
-		this.nombreUsuario = nombreUsuario;
+		NombreUsuario = nombreUsuario;
 	}
 
 	public String getApellidoUsuario() {
-		return apellidoUsuario;
+		return ApellidoUsuario;
 	}
 
 	public void setApellidoUsuario(String apellidoUsuario) {
-		this.apellidoUsuario = apellidoUsuario;
+		ApellidoUsuario = apellidoUsuario;
 	}
 
 	public String getCorreoUsuario() {
@@ -114,12 +131,44 @@ public class Usuario {
 		this.enabled = enabled;
 	}
 
-	public String getTelefonoUsuario() {
-		return telefonoUsuario;
+	public String getTelefono() {
+		return Telefono;
 	}
 
-	public void setTelefonoUsuario(String telefonoUsuario) {
-		this.telefonoUsuario = telefonoUsuario;
+	public void setTelefono(String telefono) {
+		Telefono = telefono;
+	}
+
+	public String getNombreEmpresa() {
+		return NombreEmpresa;
+	}
+
+	public void setNombreEmpresa(String nombreEmpresa) {
+		NombreEmpresa = nombreEmpresa;
+	}
+
+	public String getRUC() {
+		return RUC;
+	}
+
+	public void setRUC(String rUC) {
+		RUC = rUC;
+	}
+
+	public String getSedeEmpresa() {
+		return SedeEmpresa;
+	}
+
+	public void setSedeEmpresa(String sedeEmpresa) {
+		SedeEmpresa = sedeEmpresa;
+	}
+
+	public String getDireccionEmpresa() {
+		return DireccionEmpresa;
+	}
+
+	public void setDireccionEmpresa(String direccionEmpresa) {
+		DireccionEmpresa = direccionEmpresa;
 	}
 
 	public Ciudad getCiudad() {

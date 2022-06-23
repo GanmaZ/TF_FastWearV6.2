@@ -13,10 +13,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import pe.edu.upc.demo.entities.Empresa;
 import pe.edu.upc.demo.entities.Role;
 import pe.edu.upc.demo.entities.Usuario;
-import pe.edu.upc.demo.repositories.IEmpresaRepository;
 import pe.edu.upc.demo.repositories.IUsuarioRepository;
 
 @Service
@@ -24,39 +22,22 @@ public class JpaUserDetailsService implements UserDetailsService {
 
 	@Autowired
 	private IUsuarioRepository userRepository;
-	
-	@Autowired 
-	private IEmpresaRepository empresaRepository;
 
-	
-	
 	@Transactional(readOnly = true)
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		
+
 		Usuario user = userRepository.findByCorreoUsuario(username);
-		Empresa empre = empresaRepository.findByCorreoEmpresa(username);
-		
-		if(user != null) {
-			List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
 
-			for (Role role : user.getRoles()) {
-				authorities.add(new SimpleGrantedAuthority(role.getRol()));
-			}
+		List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
 
-			return new User(user.getCorreoUsuario(), user.getClaveUsuario(), user.getEnabled(), true, true, true, authorities);
+		for (Role role : user.getRoles()) {
+			authorities.add(new SimpleGrantedAuthority(role.getRol()));
 		}
-		else {
-			List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
 
-			for (Role role : empre.getRoles()) {
-				authorities.add(new SimpleGrantedAuthority(role.getRol()));
-			}
+		return new User(user.getCorreoUsuario(), user.getClaveUsuario(), user.getEnabled(), true, true, true,
+				authorities);
 
-			return new User(empre.getCorreoEmpresa(), empre.getClaveEmpresa(), empre.getEnabled(), true, true, true, authorities);
-		}
 	}
-	
-	
 
 }

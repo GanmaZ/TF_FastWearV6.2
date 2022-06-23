@@ -11,10 +11,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import pe.edu.upc.demo.entities.Producto;
-import pe.edu.upc.demo.serviceinterface.IEmpresaService;
 import pe.edu.upc.demo.serviceinterface.IMarcaService;
 import pe.edu.upc.demo.serviceinterface.IProductoService;
 import pe.edu.upc.demo.serviceinterface.ITipoProductoService;
+import pe.edu.upc.demo.serviceinterface.IUsuarioService;
 
 @Controller
 @RequestMapping("/productos")
@@ -23,7 +23,7 @@ public class ProductoController {
 	@Autowired
 	private IMarcaService mService;
 	@Autowired
-	private IEmpresaService eService;
+	private IUsuarioService uService;
 	@Autowired
 	private ITipoProductoService tpService;
 	@Autowired
@@ -33,7 +33,7 @@ public class ProductoController {
 	public String newProducto(Model model) {
 		model.addAttribute("producto", new Producto());
 		model.addAttribute("listaMarcas", mService.list());
-		model.addAttribute("listaEmpresas", eService.list());
+		model.addAttribute("listaUsuarios", uService.list());
 		model.addAttribute("listaTipoProductos", tpService.list());
 		return "/producto/frmRegistro";
 	}
