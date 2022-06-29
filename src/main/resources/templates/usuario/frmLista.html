@@ -16,27 +16,36 @@
 			<thead class="table-dark">
 				<tr>
 					<th scope="col">ID</th>
-					<th scope="col">Nombre</th>
-					<th scope="col">Apellido</th>
 					<th scope="col">Correo</th>
-					<th scope="col">Clave</th>
-					<th scope="col">Telefono</th>
-					<th scope="col">Ciudad</th>
+					<th scope="col">Activo</th>
+					<th scope="col">Rol</th>
+					<th scope="col">Operacion</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr th:each="usuario: ${listaUsuarios}">
 					<td th:text="${usuario.IdUsuario}"></td>
-					<td th:text="${usuario.nombreUsuario}"></td>
-					<td th:text="${usuario.apellidoUsuario}"></td>
 					<td th:text="${usuario.correoUsuario}"></td>
-					<td th:text="${usuario.claveUsuario}"></td>
-					<td th:text="${usuario.telefonoUsuario}"></td>
-					<td th:text="${usuario.ciudad.NameCiudad}"></td>
-				</tr>
+					<td th:text="${usuario.enabled}"></td>
+					<td th:each="roles: ${listaRoles}"
+						th:if="${usuario.IdUsuario == roles.user_id}"
+						th:text="${roles.rol}"></td>
+					<td><a class="btn btn-primary"
+						th:href="@{'/roles/irmodificar/' + ${usuario.IdUsuario}}">Editar
+							Rol</a> <a class="buton"
+						th:href="@{'/usuarios/lever/' + ${usuario.IdUsuario}}"> <img
+							src="/images/leverupdt.png">
+					</a>
 			</tbody>
+
 		</table>
 	</div>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
 	<br>
 	<footer th:replace="master/master :: footer"></footer>
 </body>
