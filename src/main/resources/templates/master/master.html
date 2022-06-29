@@ -205,7 +205,9 @@
 							style="color: #FFFFFF"> Reporte </a>
 							<ul class="dropdown-menu"
 								aria-labelledby="navbarDropdownMenuLink">
-								
+
+								<li><a class="dropdown-item"
+									th:href="@{/ciudades/reporteciudadventas}">CiudadxVentas</a></li>		
 								<li sec:authorize="hasAnyRole('ROLE_ADMIN')"><a class="dropdown-item"
 									th:href="@{/usuarios/reporteciudadxusuario}">ReporteCiudadxUsuario</a></li>	
 								<li><a class="dropdown-item"

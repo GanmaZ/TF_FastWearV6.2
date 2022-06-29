@@ -41,4 +41,10 @@ public class CiudadServiceImpl implements ICiudadService{
 		// TODO Auto-generated method stub
 		ciudadRepository.save(ciudad);
 	}
+
+	@Override
+	public List<String[]> CiudadVentas() {
+		// TODO Auto-generated method stub
+		return ciudadRepository.CiudadVentas();
+	}
 }
