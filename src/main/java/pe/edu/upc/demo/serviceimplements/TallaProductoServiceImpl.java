@@ -3,6 +3,7 @@ package pe.edu.upc.demo.serviceimplements;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Service;
 
 import pe.edu.upc.demo.entities.TallaProducto;
@@ -21,9 +22,10 @@ public class TallaProductoServiceImpl implements ITallaProductoService {
 		tpRepository.save(tallaproducto);
 	}
 
+	
 	@Override
 	public List<TallaProducto> list() {
-		// TODO Auto-generated method stub
+
 		return tpRepository.findAll();
 	}
 

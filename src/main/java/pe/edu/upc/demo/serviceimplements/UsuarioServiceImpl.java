@@ -28,7 +28,6 @@ public class UsuarioServiceImpl implements IUsuarioService {
 	public void insert(Usuario usuario) {
 
 		if (usuario.getNombreEmpresa() != null) {
-			
 			usuario.setEnabled(true);
 			usuario.setClaveUsuario(passwordEncoder.encode(usuario.getClaveUsuario()));
 			uRepository.save(usuario);
@@ -38,7 +37,7 @@ public class UsuarioServiceImpl implements IUsuarioService {
 			rol.setRol("ROLE_EMPRESA");
 			rol.setUser_id(usuario.getIdUsuario());
 			rRepository.save(rol);
-			
+
 		} else {
 			usuario.setEnabled(true);
 			usuario.setClaveUsuario(passwordEncoder.encode(usuario.getClaveUsuario()));
@@ -56,6 +55,33 @@ public class UsuarioServiceImpl implements IUsuarioService {
 	@Override
 	public List<Usuario> list() {
 		return uRepository.findAll();
+	}
+
+	@Override
+	public void insertadm(Usuario usuario) {
+		if (usuario.getNombreEmpresa() != null) {
+			usuario.setEnabled(true);
+			usuario.setClaveUsuario(passwordEncoder.encode(usuario.getClaveUsuario()));
+			uRepository.save(usuario);
+
+			Role rol = new Role();
+
+			rol.setRol("ROLE_EMPRESA");
+			rol.setUser_id(usuario.getIdUsuario());
+			rRepository.save(rol);
+
+		} else {
+			usuario.setEnabled(true);
+			usuario.setClaveUsuario(passwordEncoder.encode(usuario.getClaveUsuario()));
+			uRepository.save(usuario);
+
+			Role rol = new Role();
+
+			rol.setRol("ROLE_USER");
+			rol.setUser_id(usuario.getIdUsuario());
+			rRepository.save(rol);
+		}
+
 	}
 
 }
