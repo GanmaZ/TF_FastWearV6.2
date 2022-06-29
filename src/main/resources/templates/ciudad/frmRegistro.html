@@ -23,7 +23,9 @@
 				-->
 				<div class="col-sm-5">
 					<label class="form-label">Nombre: </label> <input type="text"
-						th:field="*{NameCiudad}" class="form-control" placeholder="Digite la ciudad" pattern="[A-Za-z]+" required="required"></input>
+						th:field="*{NameCiudad}" class="form-control"
+						placeholder="Digite la ciudad" pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+"
+						required="required"></input>
 				</div>
 				<br>
 				<div class="col-sm-5">

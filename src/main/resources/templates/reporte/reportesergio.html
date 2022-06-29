@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="master/master :: head">
+<meta charset="UTF-8">
+<title>ReporteCiudadxUsuario</title>
+</head>
+<body background="/images/banner-img.jpg">
+	<header th:replace="master/master :: header"></header>
+	<br>
+	<div>
+		<h1 align="center">Ciudad por Usuario</h1>
+	</div>
+	<br>
+	<div class="container text-center">
+		<table class="table table-primary">
+			<thead class="table-dark">
+				<tr>
+					<th scope="col">Ciudad</th>
+					<th scope="col">Usuario</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="rl: ${reporteLista}">
+					<td th:text="${rl[0]}"></td>
+					<td th:text="${rl[1]}"></td>
+
+				</tr>
+			</tbody>
+
+		</table>
+	</div>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<footer th:replace="master/master :: footer"></footer>
+</body>
+</html>
