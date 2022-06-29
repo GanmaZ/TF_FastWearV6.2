@@ -8,6 +8,8 @@ public interface IUsuarioService {
 	
 	public void insert(Usuario usuario);
 	
+	public void insertadm(Usuario usuario);
+	
 	List<Usuario> list();
 
 }

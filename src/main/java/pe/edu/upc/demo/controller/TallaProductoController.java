@@ -57,4 +57,14 @@ public class TallaProductoController {
 		}
 		return "/tallaproducto/frmLista";
 	}
+	
+	@GetMapping("/listarid")
+	public String lisTallaProducto(Model model) {
+		try {
+			model.addAttribute("listaTallaProductos", tpService.list());
+		} catch (Exception e) {
+			model.addAttribute("error", e.getMessage());
+		}
+		return "/tallaproducto/frmLista";
+	}
 }

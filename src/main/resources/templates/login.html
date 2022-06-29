@@ -8,29 +8,49 @@
 	<header th:replace="master/master :: header"></header>
 	<br>
 	<div>
-	<h1 align="center">Login</h1>
+		<h1 align="center">Login</h1>
 	</div>
-
-	<div class="container" align="center">
+	<div class="contenedorpost">
+		<div class="" style="width: 30rem;">
 			<div class="card-body" align="center">
 				<form th:action="@{/login}" method="post">
-					<div class="col-sm-6">
-						<input type="text" name="username" id="username"
-							class="form-control" placeholder="Ingrese su correo" autofocus
-							required />
+					<div class="col xs-2">
+						<div class="input-group">
+							<div class="input-group-append">
+								<span class="input-group-text"><i
+									class="fas fa-envelope icon"></i></span>
+							</div>
+							<input type="text" name="username" id="username"
+								class="form-control" placeholder="Ingrese su correo" autofocus
+								required />
+						</div>
 					</div>
-<br>
-					<div class="col-sm-6">
+					<br>
+					<div class="input-group">
+						<div class="input-group-append">
+							<span class="input-group-text"><i class="fas fa-key icon"></i></span>
+						</div>
 						<input type="password" name="password" id="password"
 							class="form-control" placeholder="Ingrese su clave" required />
 					</div>
-<br>
+					<br>
 					<div class="col-sm-6">
 						<input type="submit" class="btn btn-lg btn-dark btn-block"
-							value="Ingresar" />
+							value="Login" />
 					</div>
+
 				</form>
+				<br>
+				<div align="center" class="col-sm-6">
+					<div class="alert alert-success" th:if="${success != null}"
+						th:text="${success}" style="color: white;"></div>
+					<div class="alert alert-danger" th:if="${error != null}"
+						th:text="${error}" style="color: white;"></div>
+					<div class="alert alert-info" th:if="${info != null}"
+						th:text="${info}" style="color: white;"></div>
+				</div>
 			</div>
+		</div>
 	</div>
 	<br>
 	<footer th:replace="master/master :: footer"></footer>
