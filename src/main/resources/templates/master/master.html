@@ -205,6 +205,9 @@
 							style="color: #FFFFFF"> Reportes </a>
 							<ul class="dropdown-menu"
 								aria-labelledby="navbarDropdownMenuLink">
+								
+								<li sec:authorize="hasAnyRole('ROLE_ADMIN')"><a class="dropdown-item"
+									th:href="@{/usuarios/reporteciudadxusuario}">ReporteCiudadxUsuario</a></li>	
 							</ul></li>
 
 						<li class="nav-item dropdown"

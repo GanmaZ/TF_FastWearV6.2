@@ -1,5 +1,7 @@
 package pe.edu.upc.demo.controller;
 
+import java.util.Map;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -99,5 +101,11 @@ public class UsuarioController {
 		uRepository.save(user);
 
 		return "redirect:/usuarios/listar";
+	}
+	
+	@RequestMapping("/reporteciudadxusuario")
+	public String ciudadUsuario(Map<String, Object> model) {
+		model.put("reporteLista", uService.ciudadUsuario());
+		return "reporte/reportesergio";
 	}
 }
