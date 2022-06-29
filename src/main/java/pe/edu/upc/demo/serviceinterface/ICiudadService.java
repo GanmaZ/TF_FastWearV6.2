@@ -17,5 +17,6 @@ public interface ICiudadService {
 	
 	public void update(Ciudad ciudad);
 	
+	public List<String[]> CiudadVentas();
 }
 
