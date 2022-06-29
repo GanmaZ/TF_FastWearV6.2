@@ -6,6 +6,8 @@
 <title>Fast Wear</title>
 <link rel="stylesheet" type="text/css" href="static/css/estilos.css"
 	th:href="@{/css/estilos.css}">
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -42,7 +44,7 @@
 					<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
 
 						<li class="nav-item dropdown"
-							sec:authorize="hasAnyRole('ROLE_EMPRESA','ROLE_ADMIN')"><a
+							sec:authorize="hasAnyRole('ROLE_EMPRESA')"><a
 							class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 							role="button" data-bs-toggle="dropdown" aria-expanded="false"
 							style="color: #FFFFFF"> Categoria </a>
@@ -54,7 +56,7 @@
 							</ul></li>
 
 						<li class="nav-item dropdown"
-							sec:authorize="hasAnyRole('ROLE_EMPRESA','ROLE_ADMIN')"><a
+							sec:authorize="hasAnyRole('ROLE_EMPRESA')"><a
 							class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 							role="button" data-bs-toggle="dropdown" aria-expanded="false"
 							style="color: #FFFFFF"> Talla </a>
@@ -65,7 +67,7 @@
 							</ul></li>
 
 						<li class="nav-item dropdown"
-							sec:authorize="hasAnyRole('ROLE_EMPRESA','ROLE_ADMIN')"><a
+							sec:authorize="hasAnyRole('ROLE_EMPRESA')"><a
 							class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 							role="button" data-bs-toggle="dropdown" aria-expanded="false"
 							style="color: #FFFFFF"> Tipos de Producto </a>
@@ -89,7 +91,7 @@
 							</ul></li>
 
 						<li class="nav-item dropdown"
-							sec:authorize="hasAnyRole('ROLE_EMPRESA','ROLE_ADMIN')"><a
+							sec:authorize="hasAnyRole('ROLE_EMPRESA')"><a
 							class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 							role="button" data-bs-toggle="dropdown" aria-expanded="false"
 							style="color: #FFFFFF"> Marcas </a>
@@ -108,10 +110,45 @@
 								aria-labelledby="navbarDropdownMenuLink">
 								<li><a class="dropdown-item" th:href="@{/productos/nuevo}">Registrar</a></li>
 								<li><a class="dropdown-item" th:href="@{/productos/listar}">Listar</a></li>
-
+								<li sec:authorize="hasAnyRole('ROLE_ADMIN')"><a
+									class="dropdown-item" th:href="@{/tallaproductos/nuevo}">Registrar
+										Tallaproducto</a></li>
+								<li sec:authorize="hasAnyRole('ROLE_ADMIN')"><a
+									class="dropdown-item" th:href="@{/tallaproductos/listar}">Listar
+										Tallasproducto</a></li>
+								<li sec:authorize="hasAnyRole('ROLE_ADMIN')"><a
+									class="dropdown-item" th:href="@{/tallas/nuevo}">Registrar
+										talla</a></li>
+								<li sec:authorize="hasAnyRole('ROLE_ADMIN')"><a
+									class="dropdown-item" th:href="@{/tallas/listar}">Listar
+										tallas</a></li>
+								<li sec:authorize="hasAnyRole('ROLE_ADMIN')"><a
+									class="dropdown-item" th:href="@{/marcas/nuevo}">Registrar
+										Marca</a></li>
+								<li sec:authorize="hasAnyRole('ROLE_ADMIN')"><a
+									class="dropdown-item" th:href="@{/marcas/listar}">Listar
+										Marcas</a></li>
+								<li sec:authorize="hasAnyRole('ROLE_ADMIN')"><a
+									class="dropdown-item" th:href="@{/tipoproductos/nuevo}">Registrar
+										tipo</a></li>
+								<li sec:authorize="hasAnyRole('ROLE_ADMIN')"><a
+									class="dropdown-item" th:href="@{/tipoproductos/listar}">Listar
+										tipos</a></li>
+								<li sec:authorize="hasAnyRole('ROLE_ADMIN')"><a
+									class="dropdown-item" th:href="@{/categorias/nueva}">Registrar
+										categoria </a></li>
+								<li sec:authorize="hasAnyRole('ROLE_ADMIN')"><a
+									class="dropdown-item" th:href="@{/categorias/listar}">Listar
+										categoria</a></li>
+								<li sec:authorize="hasAnyRole('ROLE_ADMIN')"><a
+									class="dropdown-item" th:href="@{/categoriaproductos/nuevo}">Registrar
+										categoriaproducto</a></li>
+								<li sec:authorize="hasAnyRole('ROLE_ADMIN')"><a
+									class="dropdown-item" th:href="@{/categoriaproductos/listar}">Listar
+										categoriaproductos</a></li>
 							</ul></li>
 						<li class="nav-item dropdown"
-							sec:authorize="hasAnyRole('ROLE_EMPRESA','ROLE_ADMIN')"><a
+							sec:authorize="hasAnyRole('ROLE_EMPRESA')"><a
 							class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 							role="button" data-bs-toggle="dropdown" aria-expanded="false"
 							style="color: #FFFFFF"> TallaProducto </a>
@@ -125,7 +162,7 @@
 							</ul></li>
 
 						<li class="nav-item dropdown"
-							sec:authorize="hasAnyRole('ROLE_EMPRESA','ROLE_ADMIN')"><a
+							sec:authorize="hasAnyRole('ROLE_EMPRESA')"><a
 							class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 							role="button" data-bs-toggle="dropdown" aria-expanded="false"
 							style="color: #FFFFFF"> CategoriaProducto </a>
@@ -168,10 +205,22 @@
 							style="color: #FFFFFF"> Reporte </a>
 							<ul class="dropdown-menu"
 								aria-labelledby="navbarDropdownMenuLink">
-								
-
 							</ul></li>
 
+						<li class="nav-item dropdown"
+							sec:authorize="hasAnyRole('ROLE_EMPRESA','ROLE_ADMIN')"><a
+							class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+							role="button" data-bs-toggle="dropdown" aria-expanded="false"
+							style="color: #FFFFFF"> Usuario </a>
+							<ul class="dropdown-menu"
+								aria-labelledby="navbarDropdownMenuLink">
+								<li><a class="dropdown-item"
+									th:href="@{/usuarios/nuevouseradm}">Registrate Usuario</a></li>
+								<li><a class="dropdown-item"
+									th:href="@{/usuarios/nuevoempresaadm}">Registrar Empresa</a></li>
+								<li><a class="dropdown-item"
+									th:href="@{/usuarios/listar}">Listar</a></li>
+							</ul></li>
 
 						<!-- Para login  -->
 
