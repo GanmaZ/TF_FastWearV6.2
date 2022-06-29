@@ -84,4 +84,10 @@ public class UsuarioServiceImpl implements IUsuarioService {
 
 	}
 
+	@Override
+	public List<String[]> ciudadUsuario() {
+		// TODO Auto-generated method stub
+		return uRepository.ciudadUsuario();
+	}
+
 }

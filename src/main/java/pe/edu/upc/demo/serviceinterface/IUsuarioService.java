@@ -11,5 +11,7 @@ public interface IUsuarioService {
 	public void insertadm(Usuario usuario);
 	
 	List<Usuario> list();
+	
+	public List<String[]> ciudadUsuario();
 
 }
