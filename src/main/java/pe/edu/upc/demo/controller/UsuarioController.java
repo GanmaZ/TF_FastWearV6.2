@@ -76,6 +76,7 @@ public class UsuarioController {
 		}
 	}
 
+	
 	@GetMapping("/listar")
 	public String listUsuario(Model model) {
 		try {

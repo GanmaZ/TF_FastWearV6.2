@@ -31,7 +31,7 @@ public class MarcaServiceImpl implements IMarcaService {
 	@Override
 	public void delete(int idMarca) {
 		marcaRepository.deleteById(idMarca);
-		
+
 	}
 
 	@Override
@@ -43,9 +43,13 @@ public class MarcaServiceImpl implements IMarcaService {
 	@Override
 	public void update(Marca marca) {
 		marcaRepository.save(marca);
-		
+
 	}
-	
-	
+
+	@Override
+	public List<String[]> ventasMarca() {
+		// TODO Auto-generated method stub
+		return marcaRepository.ventasMarca();
+	}
 
 }
