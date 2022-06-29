@@ -25,13 +25,13 @@
 					<label class="form-label">Nombre del Usuario:</label> <input
 						type="text" th:field="*{NombreUsuario}" class="form-control"
 						placeholder="Digite su nombre" required="required"
-						pattern="[A-Za-z ]+"></input>
+						pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+"></input>
 				</div>
 				<div class="col-sm-5">
 					<label class="form-label">Apellido del Usuario:</label> <input
 						type="text" th:field="*{ApellidoUsuario}" class="form-control"
 						placeholder="Digite su apellido" required="required"
-						pattern="[A-Za-z ]+"></input>
+						pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+"></input>
 				</div>
 				<div class="col-sm-5">
 					<label class="form-label">Correo del Usuario: </label> <input
