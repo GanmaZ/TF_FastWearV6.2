@@ -202,13 +202,19 @@
 							sec:authorize="hasAnyRole('ROLE_EMPRESA','ROLE_ADMIN')"><a
 							class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 							role="button" data-bs-toggle="dropdown" aria-expanded="false"
-							style="color: #FFFFFF"> Reportes </a>
+							style="color: #FFFFFF"> Reporte </a>
 							<ul class="dropdown-menu"
 								aria-labelledby="navbarDropdownMenuLink">
+								
+								<li sec:authorize="hasAnyRole('ROLE_ADMIN')"><a class="dropdown-item"
+									th:href="@{/usuarios/reporteciudadxusuario}">ReporteCiudadxUsuario</a></li>	
+								<li><a class="dropdown-item"
+									th:href="@{/marcas/reporteventaspormarca}">Reporte ventas por ciudad</a></li>
+
 							</ul></li>
 
 						<li class="nav-item dropdown"
-							sec:authorize="hasAnyRole('ROLE_EMPRESA','ROLE_ADMIN')"><a
+							sec:authorize="hasAnyRole('ROLE_ADMIN')"><a
 							class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 							role="button" data-bs-toggle="dropdown" aria-expanded="false"
 							style="color: #FFFFFF"> Usuario </a>
@@ -218,8 +224,7 @@
 									th:href="@{/usuarios/nuevouseradm}">Registrate Usuario</a></li>
 								<li><a class="dropdown-item"
 									th:href="@{/usuarios/nuevoempresaadm}">Registrar Empresa</a></li>
-								<li><a class="dropdown-item"
-									th:href="@{/usuarios/listar}">Listar</a></li>
+								<li><a class="dropdown-item" th:href="@{/usuarios/listar}">Listar</a></li>
 							</ul></li>
 
 						<!-- Para login  -->
