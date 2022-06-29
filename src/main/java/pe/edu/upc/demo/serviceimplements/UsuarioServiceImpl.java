@@ -13,29 +13,44 @@ import pe.edu.upc.demo.repositories.IUsuarioRepository;
 import pe.edu.upc.demo.serviceinterface.IUsuarioService;
 
 @Service
-public class UsuarioServiceImpl implements IUsuarioService{
+public class UsuarioServiceImpl implements IUsuarioService {
 
 	@Autowired
 	private IUsuarioRepository uRepository;
 
 	@Autowired
 	private IRoleRepository rRepository;
-	
+
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
-	
+
 	@Override
 	public void insert(Usuario usuario) {
-		usuario.setEnabled(true);
-		usuario.setClaveUsuario(passwordEncoder.encode(usuario.getClaveUsuario()));
-		uRepository.save(usuario);
-		
-		Role rol = new Role();
-		
-		rol.setRol("ROLE_USER");
-		rol.setUser_id(usuario.getIdUsuario());
-		rol.setEmpresa_id(1);
-		rRepository.save(rol);	
+
+		if (usuario.getNombreEmpresa() != null) {
+			
+			usuario.setEnabled(true);
+			usuario.setClaveUsuario(passwordEncoder.encode(usuario.getClaveUsuario()));
+			uRepository.save(usuario);
+
+			Role rol = new Role();
+
+			rol.setRol("ROLE_EMPRESA");
+			rol.setUser_id(usuario.getIdUsuario());
+			rRepository.save(rol);
+			
+		} else {
+			usuario.setEnabled(true);
+			usuario.setClaveUsuario(passwordEncoder.encode(usuario.getClaveUsuario()));
+			uRepository.save(usuario);
+
+			Role rol = new Role();
+
+			rol.setRol("ROLE_USER");
+			rol.setUser_id(usuario.getIdUsuario());
+			rRepository.save(rol);
+		}
+
 	}
 
 	@Override

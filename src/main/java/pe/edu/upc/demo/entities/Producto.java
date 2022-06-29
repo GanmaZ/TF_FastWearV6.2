@@ -18,7 +18,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Entity
 @Table(name = "Producto")
 public class Producto {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int IdProducto;
@@ -28,34 +28,34 @@ public class Producto {
 
 	@Column(name = "DescripcionProducto", nullable = true, length = 200)
 	private String DescripcionProducto;
-	
+
 	@Column(name = "PrecioProducto", nullable = false)
 	private double PrecioProducto;
-	
+
 	@Temporal(TemporalType.TIMESTAMP)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name = "AnioProduccion", nullable = false)
 	private Date AnioProduccion;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "IdMarca", nullable = false)
 	private Marca marca;
 
 	@ManyToOne
-	@JoinColumn(name = "IdEmpresa", nullable = false)
-	private Empresa empresa;
-	
-	@ManyToOne
 	@JoinColumn(name = "IdTipoProducto", nullable = false)
 	private TipoProducto tipoProducto;
 
+	@ManyToOne
+	@JoinColumn(name = "IdUsuario", nullable = false)
+	private Usuario usuario;
+
 	public Producto() {
 		super();
-		//TODO Auto-generated constructor stub
+		// TODO Auto-generated constructor stub
 	}
 
 	public Producto(int idProducto, String nombreProducto, String descripcionProducto, double precioProducto,
-			Date anioProduccion, Marca marca, Empresa empresa, TipoProducto tipoProducto) {
+			Date anioProduccion, Marca marca, TipoProducto tipoProducto, Usuario usuario) {
 		super();
 		this.IdProducto = idProducto;
 		this.NombreProducto = nombreProducto;
@@ -63,8 +63,8 @@ public class Producto {
 		this.PrecioProducto = precioProducto;
 		this.AnioProduccion = anioProduccion;
 		this.marca = marca;
-		this.empresa = empresa;
 		this.tipoProducto = tipoProducto;
+		this.usuario = usuario;
 	}
 
 	public int getIdProducto() {
@@ -115,14 +115,6 @@ public class Producto {
 		this.marca = marca;
 	}
 
-	public Empresa getEmpresa() {
-		return empresa;
-	}
-
-	public void setEmpresa(Empresa empresa) {
-		this.empresa = empresa;
-	}
-
 	public TipoProducto getTipoProducto() {
 		return tipoProducto;
 	}
@@ -131,5 +123,12 @@ public class Producto {
 		this.tipoProducto = tipoProducto;
 	}
 
-	
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+
 }

@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="master/master :: head">
 <meta charset="UTF-8">
-<title>Registro DetalleCompra</title>
+<title>Registro DetallePedido</title>
 </head>
 <body background="/images/banner-img.jpg">
 	<header th:replace="master/master :: header"></header>
@@ -13,7 +13,7 @@
 	<br>
 	<div class="container">
 		<div>
-			<form th:action="@{/detallecompras/guardar}"
+			<form th:action="@{/detallecompras/guardarextra}"
 				th:object="${detallecompra}" method="post">
 
 				<div class="col-sm-5">

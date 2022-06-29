@@ -23,12 +23,20 @@ public class UsuarioController {
 	@Autowired
 	private ICiudadService cService;
 
-	@GetMapping("/nuevo")
+	@GetMapping("/nuevouser")
 	public String newUsuario(Model model) {
 		model.addAttribute("usuario", new Usuario());
 		model.addAttribute("listaCiudades", cService.list());
 
 		return "/usuario/frmRegistro";
+	}
+	
+	@GetMapping("/nuevoempresa")
+	public String newEmpresa(Model model) {
+		model.addAttribute("usuario", new Usuario());
+		model.addAttribute("listaCiudades", cService.list());
+
+		return "/empresa/RegistrarEmpresa";
 	}
 
 	@PostMapping("/guardar")

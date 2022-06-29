@@ -21,7 +21,6 @@
 					<th scope="col">Precio</th>
 					<th scope="col">Fecha de Produccion</th>
 					<th scope="col">Marca</th>
-					<th scope="col">Empresa</th>
 					<th scope="col">Tipo</th>
 				</tr>
 			</thead>
@@ -33,7 +32,6 @@
 					<td th:text="${producto.PrecioProducto}"></td>
 					<td th:text="${#dates.format(producto.AnioProduccion,'dd/MM/yyyy')}"></td>
 					<td th:text="${producto.marca.nombreMarca}"></td>
-					<td th:text="${producto.empresa.nombreEmpresa}"></td>
 					<td th:text="${producto.tipoProducto.NombreTipoProducto}"></td>
 					
 				</tr>

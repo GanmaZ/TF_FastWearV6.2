@@ -53,16 +53,7 @@
 							th:selected="(${Marca.IdMarca}) == *{marca.IdMarca}"></option>
 					</select>
 				</div>
-				<div class="col-sm-5">
-					<label class="form-label">Empresa:</label> <select
-						name="selectEmpresa" class="form-control"
-						th:field="*{empresa.IdEmpresa}">
-						<option th:each="Empresa: ${listaEmpresas}"
-							th:value="${Empresa.IdEmpresa}"
-							th:text="${Empresa.nombreEmpresa}"
-							th:selected="(${Empresa.IdEmpresa}) == *{empresa.IdEmpresa}"></option>
-					</select>
-				</div>
+				
 				<div class="col-sm-5">
 					<label class="form-label">Tipo:</label> <select name="selectTipo"
 						class="form-control" th:field="*{tipoProducto.IdTipoProducto}">

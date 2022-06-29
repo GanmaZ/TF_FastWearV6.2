@@ -14,7 +14,6 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import org.springframework.format.annotation.DateTimeFormat;
-import org.thymeleaf.exceptions.TemplateInputException;
 
 @Entity
 @Table(name = "Compra")
@@ -24,17 +23,14 @@ public class Compra {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int IdCompra;
 
-	@Column(name = "Total", nullable = false)
+	@Column(name = "Total", nullable = true)
 	private double Total;
-	
+
 	@Temporal(TemporalType.TIMESTAMP)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	@Column(name = "FechaCompra", nullable = false)
+	@Column(name = "FechaCompra", nullable = true)
 	private Date FechaCompra;
-	
-	@Column(name = "MetodoPago", nullable = true, length = 200)
-	private String MetodoPago;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "IdUsuario", nullable = false)
 	private Usuario usuario;
@@ -44,12 +40,11 @@ public class Compra {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Compra(int idCompra, double total, Date fechaCompra, String metodoPago, Usuario usuario) {
+	public Compra(int idCompra, double total, Date fechaCompra, Usuario usuario) {
 		super();
 		this.IdCompra = idCompra;
 		this.Total = total;
 		this.FechaCompra = fechaCompra;
-		this.MetodoPago = metodoPago;
 		this.usuario = usuario;
 	}
 
@@ -77,14 +72,6 @@ public class Compra {
 		FechaCompra = fechaCompra;
 	}
 
-	public String getMetodoPago() {
-		return MetodoPago;
-	}
-
-	public void setMetodoPago(String metodoPago) {
-		MetodoPago = metodoPago;
-	}
-
 	public Usuario getUsuario() {
 		return usuario;
 	}
@@ -92,5 +79,5 @@ public class Compra {
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
-	
+
 }

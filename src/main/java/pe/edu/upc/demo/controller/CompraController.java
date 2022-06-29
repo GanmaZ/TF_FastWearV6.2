@@ -37,7 +37,7 @@ public class CompraController {
 			return"/compra/frmRegistro";
 		}
 		else {
-			cService.insert(objCompra);
+			
 			return "redirect:/compras/nuevo";
 		}
 	}

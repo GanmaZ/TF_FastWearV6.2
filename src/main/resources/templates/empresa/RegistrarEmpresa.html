@@ -14,7 +14,7 @@
 	<br>
 	<div class="container ">
 		<div>
-			<form th:action="@{/empresas/guardar}" th:object="${emp}"
+			<form th:action="@{/usuarios/guardar}" th:object="${usuario}"
 				method="post">
 				<!--
 				<div class="col-sm-5">
@@ -25,13 +25,13 @@
 
 				<div class="col-sm-5">
 					<label class="form-label">Nombre de Empresa: </label> <input
-						type="text" th:field="*{nombreEmpresa}" class="form-control"
+						type="text" th:field="*{NombreEmpresa}" class="form-control"
 						placeholder="Digite el nombre de su empresa" pattern="[A-Za-z]+"
 						required="required"></input>
 				</div>
 				<div class="col-sm-5">
 					<label class="form-label">Numero de Ruc de Empresa: </label> <input
-						type="text" th:field="*{ruc}" class="form-control"
+						type="text" th:field="*{RUC}" class="form-control"
 						placeholder="Digite su numero de ruc" required="required"
 						pattern="[0-9]{11}"
 						oninvalid="setCustomValidity('Debe contener 11 digitos')"
@@ -40,29 +40,29 @@
 
 				<div class="col-sm-5">
 					<label class="form-label">Sede de la empresa: </label> <input
-						type="text" th:field="*{sedeEmpresa}" class="form-control"
+						type="text" th:field="*{SedeEmpresa}" class="form-control"
 						placeholder="Digite su sede" required="required"></input>
 				</div>
 
 				<div class="col-sm-5">
 					<label class="form-label">Telefono de la empresa: </label> <input
-						type="text" th:field="*{telefonoEmpresa}" class="form-control"
+						type="text" th:field="*{Telefono}" class="form-control"
 						placeholder="Digite su telefono" required="required"></input>
 				</div>
 				<div class="col-sm-5">
 					<label class="form-label">Direccion de la empresa: </label> <input
-						type="text" th:field="*{direccionEmpresa}" class="form-control"
+						type="text" th:field="*{DireccionEmpresa}" class="form-control"
 						placeholder="Digite su direccion" required="required"></input>
 				</div>
 				<div class="col-sm-5">
 					<label class="form-label">Correo de la empresa: </label> <input
-						type="email" th:field="*{correoEmpresa}" class="form-control"
+						type="email" th:field="*{correoUsuario}" class="form-control"
 						placeholder="Digite su correo" required="required"
 						pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}"></input>
 				</div>
 				<div class="col-sm-5">
 					<label class="form-label">Clave de la empresa: </label> <input
-						type="password" th:field="*{claveEmpresa}" class="form-control"
+						type="password" th:field="*{claveUsuario}" class="form-control"
 						placeholder="Digite su clave" required="required"></input>
 				</div>
 				<br>
