@@ -80,4 +80,10 @@ public class CiudadController {
 		cidService.update(ci);
 		return "redirect:/ciudades/listar";
 	}
+	
+	@RequestMapping("/reporteciudadventas")
+    public String CiudadVentas(Map<String, Object> model) {
+        model.put("reporteLista", cidService.CiudadVentas());
+        return "reporte/reporteJoel";
+    }
 }
