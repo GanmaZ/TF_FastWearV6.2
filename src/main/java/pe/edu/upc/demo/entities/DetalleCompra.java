@@ -27,8 +27,8 @@ public class DetalleCompra {
 	private String MetodoPago;
 
 	@ManyToOne
-	@JoinColumn(name = "IdProducto", nullable = false)
-	private Producto producto;
+	@JoinColumn(name = "IdTallaProducto", nullable = false)
+	private TallaProducto tallaProducto;
 
 	@ManyToOne
 	@JoinColumn(name = "IdCompra", nullable = false)
@@ -39,14 +39,14 @@ public class DetalleCompra {
 		// TODO Auto-generated constructor stub
 	}
 
-	public DetalleCompra(int idDetalleCompra, double importe, int cantidad, String metodoPago, Producto producto,
-			Compra compra) {
+	public DetalleCompra(int idDetalleCompra, double importe, int cantidad, String metodoPago,
+			TallaProducto tallaProducto, Compra compra) {
 		super();
 		this.IdDetalleCompra = idDetalleCompra;
 		this.Importe = importe;
 		this.Cantidad = cantidad;
 		this.MetodoPago = metodoPago;
-		this.producto = producto;
+		this.tallaProducto = tallaProducto;
 		this.compra = compra;
 	}
 
@@ -82,12 +82,12 @@ public class DetalleCompra {
 		MetodoPago = metodoPago;
 	}
 
-	public Producto getProducto() {
-		return producto;
+	public TallaProducto getTallaProducto() {
+		return tallaProducto;
 	}
 
-	public void setProducto(Producto producto) {
-		this.producto = producto;
+	public void setTallaProducto(TallaProducto tallaProducto) {
+		this.tallaProducto = tallaProducto;
 	}
 
 	public Compra getCompra() {

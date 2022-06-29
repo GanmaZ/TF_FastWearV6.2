@@ -8,7 +8,7 @@
 	<header th:replace="master/master :: header"></header>
 	<br>
 	<div>
-		<h1 align="center">Registro de Detalle de Compra</h1>
+		<h1 align="center">Registro de Detalles del Pedido</h1>
 	</div>
 	<br>
 	<div class="container">
@@ -31,13 +31,12 @@
 
 				<div class="col-sm-5">
 					<label class="form-label">Producto:</label> <select
-						name="selectProducto" class="form-control"
-						th:field="*{producto.IdProducto}">
-						<option th:each="Producto: ${listaProductos}"
-							th:value="${Producto.IdProducto}"
-							th:text="${Producto.NombreProducto} + ' --- Precio: S/' + ${Producto.PrecioProducto}"
-							th:selected="(${Producto.IdProducto}) == *{producto.IdProducto}"></option>
-						
+						name="selectTallaProducto" class="form-control"
+						th:field="*{TallaProducto.idTallaProducto}">
+						<option th:each="tallaProducto: ${listaTallaProductos}"
+							th:value="${tallaProducto.idTallaProducto}"
+							th:text="${tallaProducto.producto.NombreProducto} + ' --- Precio: S/' + ${tallaProducto.producto.PrecioProducto} + ' --- Talla: ' + ${tallaProducto.talla.nombreTalla}"
+							th:selected="(${tallaProducto.idTallaProducto}) == *{TallaProducto.idTallaProducto}"></option>
 					</select>
 				</div>
 

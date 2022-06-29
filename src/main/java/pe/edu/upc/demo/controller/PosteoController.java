@@ -47,7 +47,7 @@ public class PosteoController {
 			return "/posteo/frmRegistro";
 		} else {
 			pService.insert(objPosteo);
-			return "redirect:/posteos/nuevo";
+			return "redirect:/posteos/listar";
 		}
 	}
 

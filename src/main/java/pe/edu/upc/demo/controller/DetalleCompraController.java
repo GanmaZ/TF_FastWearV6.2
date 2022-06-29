@@ -18,8 +18,7 @@ import pe.edu.upc.demo.entities.Compra;
 import pe.edu.upc.demo.entities.DetalleCompra;
 import pe.edu.upc.demo.repositories.ICompraRepository;
 import pe.edu.upc.demo.repositories.IDetalleCompraRepository;
-import pe.edu.upc.demo.repositories.IProductoRepository;
-import pe.edu.upc.demo.serviceinterface.ICompraService;
+import pe.edu.upc.demo.repositories.ITallaProductoRepository;
 import pe.edu.upc.demo.serviceinterface.IDetalleCompraService;
 
 @Controller
@@ -27,10 +26,8 @@ import pe.edu.upc.demo.serviceinterface.IDetalleCompraService;
 public class DetalleCompraController {
 
 	@Autowired
-	private IProductoRepository pRepository;
+	private ITallaProductoRepository tpRepository;
 
-	@Autowired
-	private ICompraService cService;
 
 	@Autowired
 	private IDetalleCompraService dService;
@@ -46,7 +43,7 @@ public class DetalleCompraController {
 	@GetMapping("/nuevo")
 	public String newDetalleCompra(Model model) {
 		model.addAttribute("detallecompra", new DetalleCompra());
-		model.addAttribute("listaProductos", pRepository.findAll());
+		model.addAttribute("listaTallaProductos", tpRepository.findAll());
 
 		return "/detallecompra/frmRegistro";
 	}
@@ -66,7 +63,7 @@ public class DetalleCompraController {
 		compra = cRepository.findByidCompra(id);
 
 		model.addAttribute("detallecompra", new DetalleCompra());
-		model.addAttribute("listaProductos", pRepository.findAll());
+		model.addAttribute("listaTallaProductos", tpRepository.findAll());
 
 		return "/detallecompra/frmRegistroextra";
 	}

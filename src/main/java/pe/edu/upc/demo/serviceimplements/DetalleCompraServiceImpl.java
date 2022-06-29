@@ -9,9 +9,11 @@ import org.springframework.stereotype.Service;
 import pe.edu.upc.demo.entities.Compra;
 import pe.edu.upc.demo.entities.DetalleCompra;
 import pe.edu.upc.demo.entities.Producto;
+import pe.edu.upc.demo.entities.TallaProducto;
 import pe.edu.upc.demo.repositories.ICompraRepository;
 import pe.edu.upc.demo.repositories.IDetalleCompraRepository;
 import pe.edu.upc.demo.repositories.IProductoRepository;
+import pe.edu.upc.demo.repositories.ITallaProductoRepository;
 import pe.edu.upc.demo.serviceinterface.IDetalleCompraService;
 
 @Service
@@ -27,24 +29,27 @@ public class DetalleCompraServiceImpl implements IDetalleCompraService {
 	private ICompraRepository cRepository;
 
 	@Autowired
+	private ITallaProductoRepository tRepository;
+
+	@Autowired
 	private IProductoRepository pRepository;
 
 	@Override
 	public void insert(DetalleCompra detallecompra) {
 		Compra comp = new Compra();
+		TallaProducto tp = new TallaProducto();
 		Producto pro = new Producto();
 
 		detallecompra.setCompra(cService.insert());
-
 		comp = detallecompra.getCompra();
+		tp = tRepository.findByidTallaProducto(detallecompra.getTallaProducto().getIdTallaProducto());
+		pro = pRepository.findByidProducto(tp.getProducto().getIdProducto());
 
-		pro = pRepository.findByidProducto(detallecompra.getProducto().getIdProducto());
-
-		detallecompra.setImporte(pro.getPrecioProducto());
+		detallecompra.setImporte(pro.getPrecioProducto()*detallecompra.getCantidad());
 
 		deRepository.save(detallecompra);
 
-		comp.setTotal((detallecompra.getCantidad()) * (detallecompra.getImporte()));
+		comp.setTotal(detallecompra.getImporte());
 
 		cRepository.save(comp);
 	}
@@ -76,17 +81,20 @@ public class DetalleCompraServiceImpl implements IDetalleCompraService {
 	@Override
 	public void insertextra(DetalleCompra detallecompra) {
 		Compra comp = new Compra();
+		TallaProducto tp = new TallaProducto();
 		Producto pro = new Producto();
 
 		comp = detallecompra.getCompra();
+		System.out.println(detallecompra.getTallaProducto().getIdTallaProducto());
+		
+		tp = tRepository.findByidTallaProducto(detallecompra.getTallaProducto().getIdTallaProducto());
+		pro = pRepository.findByidProducto(tp.getProducto().getIdProducto());
 
-		pro = pRepository.findByidProducto(detallecompra.getProducto().getIdProducto());
-
-		detallecompra.setImporte(pro.getPrecioProducto());
+		detallecompra.setImporte(pro.getPrecioProducto()*detallecompra.getCantidad());
 
 		deRepository.save(detallecompra);
 
-		comp.setTotal((comp.getTotal())+(detallecompra.getCantidad()) * (detallecompra.getImporte()));
+		comp.setTotal(comp.getTotal() + detallecompra.getImporte());
 
 		cRepository.save(comp);
 	}

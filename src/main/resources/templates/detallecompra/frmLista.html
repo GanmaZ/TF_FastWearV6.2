@@ -2,13 +2,13 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="master/master :: head">
 <meta charset="UTF-8">
-<title>Lista de DetalleCompra</title>
+<title>Lista de DetallePedido</title>
 </head>
 <body background="/images/banner-img.jpg">
 	<header th:replace="master/master :: header"></header>
 	<br>
 	<div>
-		<h1 align="center">Lista de DetalleCompra</h1>
+		<h1 align="center">Detalles del Pedido</h1>
 	</div>
 	<br>
 	<div class="container text-center">
@@ -26,7 +26,7 @@
 					<td th:text="${detallecompra.IdDetalleCompra}"></td>
 					<td th:text="${detallecompra.Importe}"></td>
 					<td th:text="${detallecompra.Cantidad}"></td>
-					<td th:text="${detallecompra.producto.NombreProducto}"></td>
+					<td th:text="${detallecompra.tallaProducto.producto.NombreProducto + ' --- Talla: ' + detallecompra.tallaProducto.talla.nombreTalla}"></td>
 					
 				</tr>
 			</tbody>
