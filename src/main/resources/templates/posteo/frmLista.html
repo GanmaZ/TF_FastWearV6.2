@@ -15,34 +15,37 @@
 		<a class="boton" th:href="@{/posteos/nuevo}">Nuevo</a>
 	</div>
 	<br>
-	<div class="container text-center">
-		<table class="table table-primary">
-			<thead class="table-dark">
-				<tr>
-					<th scope="col">ID</th>
-					<th scope="col">Descripción del posteo</th>
-					<th scope="col">Fecha de Posteo</th>
-					<th scope="col">Cantidad de reacciones</th>
-					<th scope="col">Usuario</th>
-					<th scope="col">Valoracion</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr th:each="posteo: ${listaPosteos}">
-					<td th:text="${posteo.IdPosteo}"></td>
-					<td th:text="${posteo.DescripcionPosteo}"></td>
-					<td th:text="${#dates.format(posteo.FechaPosteo,'dd/MM/yyyy')}"></td>
-					<td th:text="${posteo.CantidadReaccion}"></td>
-					<td th:text="${posteo.usuario.NombreUsuario}"></td>
-					<td><a class="btn btn-primary"
-						th:href="@{'/posteos/reaccionp/'} + ${posteo.IdPosteo}">Me
-							Gusta</a>&nbsp; <a class="btn btn-danger"
-						th:href="@{'/posteos/reaccionn/'} + ${posteo.IdPosteo}">No me
-							Gusta</a></td>
-				</tr>
-			</tbody>
-		</table>
+	<div class="contenedorpost" th:each="posteo: ${listaPosteos}">
+		<div class="card w-50 text-center border-dark">
+			<div class="card-header text-white bg-dark">
+				<div class="row">
+					<div class="col">
+						<a type="text" th:text="${posteo.usuario.NombreUsuario}"></a>
+					</div>
+					<div class="col">
+						<a th:text="${#dates.format(posteo.FechaPosteo,'dd/MM/yyyy')}"></a>
+					</div>
+
+				</div>
+			</div>
+			<div class="card-body bg-white">
+				<p class="card-text" th:text="${posteo.DescripcionPosteo}"></p>
+				<a class="btn btn-primary"
+					th:href="@{'/posteos/reaccionp/'} + ${posteo.IdPosteo}">Me
+					Gusta</a>&nbsp; <a class="btn btn-danger"
+					th:href="@{'/posteos/reaccionn/'} + ${posteo.IdPosteo}">No me
+					Gusta</a>
+			</div>
+			<div class="card-footer text-white bg-dark"
+				th:text="'Reacciones: ' + ${posteo.CantidadReaccion}"></div>
+		</div>
+		<br>
 	</div>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
 	<br>
 	<footer th:replace="master/master :: footer"></footer>
 </body>
