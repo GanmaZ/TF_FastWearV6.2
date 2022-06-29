@@ -65,18 +65,24 @@ public class MarcaController {
 		}
 		return "marca/frmLista";
 	}
-	
+
 	@RequestMapping("/irmodificar/{id}")
 	public String goUpdate(@PathVariable int id, Model model) {
-		Optional<Marca>objMarca=marService.listId(id);
+		Optional<Marca> objMarca = marService.listId(id);
 		model.addAttribute("marca", objMarca.get());
 		return "marca/frmActualiza";
 	}
-	
+
 	@RequestMapping("/modificar")
 	public String updateMarca(Marca ma) {
 		marService.update(ma);
 		return "redirect:/marcas/listar";
+	}
+
+	@RequestMapping("/reporteventaspormarca")
+	public String ventasMarca(Map<String, Object> model) {
+		model.put("reporteLista", marService.ventasMarca());
+		return "reporte/reporteairton";
 	}
 
 }
