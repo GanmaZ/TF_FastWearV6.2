@@ -3,6 +3,9 @@ package pe.edu.upc.demo.serviceimplements;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -11,7 +14,6 @@ import pe.edu.upc.demo.entities.Usuario;
 import pe.edu.upc.demo.repositories.IRoleRepository;
 import pe.edu.upc.demo.repositories.IUsuarioRepository;
 import pe.edu.upc.demo.serviceinterface.IUsuarioService;
-
 @Service
 public class UsuarioServiceImpl implements IUsuarioService {
 
@@ -20,7 +22,7 @@ public class UsuarioServiceImpl implements IUsuarioService {
 
 	@Autowired
 	private IRoleRepository rRepository;
-
+	
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
 
@@ -88,6 +90,15 @@ public class UsuarioServiceImpl implements IUsuarioService {
 	public List<String[]> ciudadUsuario() {
 		// TODO Auto-generated method stub
 		return uRepository.ciudadUsuario();
+	}
+
+	@Override
+	public List<String[]> pedidoUsuario() {
+		// TODO Auto-generated method stub
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+ 		UserDetails userDetail = (UserDetails) auth.getPrincipal();
+ 		Usuario usuario = uRepository.findByCorreoUsuario(userDetail.getUsername());
+ 		return uRepository.pedidoUsuario(usuario.getIdUsuario());
 	}
 
 }
