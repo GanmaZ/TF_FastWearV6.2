@@ -79,8 +79,8 @@ public class MarcaController {
 		return "redirect:/marcas/listar";
 	}
 
-	@RequestMapping("/reporteventaspormarca")
-	public String ventasMarca(Map<String, Object> model) {
+	@RequestMapping("/reportepedidospormarca")
+	public String PedidosMarca(Map<String, Object> model) {
 		model.put("reporteLista", marService.ventasMarca());
 		return "reporte/reporteairton";
 	}

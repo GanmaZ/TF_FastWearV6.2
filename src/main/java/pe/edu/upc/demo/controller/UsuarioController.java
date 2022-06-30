@@ -109,4 +109,9 @@ public class UsuarioController {
 		model.put("reporteLista", uService.ciudadUsuario());
 		return "reporte/reportesergio";
 	}
+	@RequestMapping("/reportepedidoporusuario")
+	public String pedidoUsuario(Map<String, Object> model) {
+		model.put("reporteLista", uService.pedidoUsuario());
+		return "reporte/reportejavier";
+	}
 }

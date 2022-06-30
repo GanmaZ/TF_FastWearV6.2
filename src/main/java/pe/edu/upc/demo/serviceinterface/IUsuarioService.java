@@ -13,5 +13,9 @@ public interface IUsuarioService {
 	List<Usuario> list();
 	
 	public List<String[]> ciudadUsuario();
+	
+	public List<String[]> pedidoUsuario();
+	
+	
 
 }
