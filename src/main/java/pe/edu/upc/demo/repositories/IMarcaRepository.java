@@ -16,7 +16,8 @@ public interface IMarcaRepository extends JpaRepository<Marca, Integer> {
 			+ "inner join talla_producto t on t.id_producto=p.id_producto\r\n"
 			+ "inner join detallecompra dtc on dtc.id_talla_producto= t.id_talla_producto\r\n"
 			+ "inner join compra c on c.id_compra=dtc.id_compra\r\n"
-			+ "inner join usuario u on u.id_usuario=c.id_usuario \r\n" + "group by m.id_marca", nativeQuery = true)
-	public List<String[]> ventasMarca();
+			+ "inner join usuario u on u.id_usuario=c.id_usuario \r\n" + "WHERE p.id_usuario =:id_usuario\r\n"
+			+ "group by m.id_marca", nativeQuery = true)
+	public List<String[]> PedidosMarca(int id_usuario);
 
 }

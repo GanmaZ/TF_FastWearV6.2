@@ -4,10 +4,15 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import pe.edu.upc.demo.entities.Marca;
+import pe.edu.upc.demo.entities.Usuario;
 import pe.edu.upc.demo.repositories.IMarcaRepository;
+import pe.edu.upc.demo.repositories.IUsuarioRepository;
 import pe.edu.upc.demo.serviceinterface.IMarcaService;
 
 @Service
@@ -15,6 +20,9 @@ public class MarcaServiceImpl implements IMarcaService {
 
 	@Autowired
 	private IMarcaRepository marcaRepository;
+
+	@Autowired
+	private IUsuarioRepository uRepository;
 
 	@Override
 	public void Insert(Marca marca) {
@@ -49,7 +57,10 @@ public class MarcaServiceImpl implements IMarcaService {
 	@Override
 	public List<String[]> ventasMarca() {
 		// TODO Auto-generated method stub
-		return marcaRepository.ventasMarca();
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		UserDetails userDetail = (UserDetails) auth.getPrincipal();
+		Usuario usuario = uRepository.findByCorreoUsuario(userDetail.getUsername());
+		return marcaRepository.PedidosMarca(usuario.getIdUsuario());
 	}
 
 }
