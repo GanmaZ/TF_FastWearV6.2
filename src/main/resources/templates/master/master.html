@@ -207,13 +207,15 @@
 								aria-labelledby="navbarDropdownMenuLink">
 
 								<li><a class="dropdown-item"
-									th:href="@{/ciudades/reporteciudadventas}">CiudadxVentas</a></li>		
-								<li sec:authorize="hasAnyRole('ROLE_ADMIN')"><a class="dropdown-item"
-									th:href="@{/usuarios/reporteciudadxusuario}">ReporteCiudadxUsuario</a></li>	
+									th:href="@{/ciudades/reporteciudadventas}">CiudadxVentas</a></li>
+								<li sec:authorize="hasAnyRole('ROLE_ADMIN')"><a
+									class="dropdown-item"
+									th:href="@{/usuarios/reporteciudadxusuario}">ReporteCiudadxUsuario</a></li>
 								<li><a class="dropdown-item"
 									th:href="@{/marcas/reportepedidospormarca}">Reporte pedidos por marca</a></li>
 								<li><a class="dropdown-item"
 									th:href="@{/usuarios/reportepedidoporusuario}">Reporte pedidos por usuario</a></li>
+								<li><a class="dropdown-item"
 									th:href="@{/tipoproductos/reporte}">tipo de producto x cantidad de Pedidos</a></li>
 
 							</ul></li>
