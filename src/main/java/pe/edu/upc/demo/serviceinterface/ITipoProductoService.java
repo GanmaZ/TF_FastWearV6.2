@@ -9,6 +9,7 @@ public interface ITipoProductoService {
 
 	public void insert(TipoProducto tipoproducto);
 	public List<TipoProducto> list();
+	public List<String[]> reporte();
 	public void delete(int idTipoProducto);
 	Optional<TipoProducto> listId(int idTipoProducto);
 	public void update(TipoProducto tipoproducto);
