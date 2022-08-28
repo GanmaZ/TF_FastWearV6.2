@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="master/master :: head">
+<meta charset="UTF-8">
+<title>Registro Usuario</title>
+</head>
+<body background="/images/banner-img.jpg">
+	<header th:replace="master/master :: header"></header>
+	<br>
+	<div>
+		<h1 align="center">Registro de Usuario</h1>
+	</div>
+	<br>
+	<div class="container">
+		<div>
+			<form th:action="@{/usuarios/guardar}" th:object="${usuario}"
+				method="post">
+				<!--
+				<div class="col-sm-5">
+					<label class="form-label">Id:</label> <input type="text"
+						th:field="*{IdUsuario}" class="form-control" readonly="readonly"></input>
+				</div>
+				-->
+				<div class="col-sm-5">
+					<label class="form-label">Nombre del Usuario:</label> <input
+						type="text" th:field="*{NombreUsuario}" class="form-control"
+						placeholder="Digite su nombre" required="required"
+						pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+"></input>
+				</div>
+				<div class="col-sm-5">
+					<label class="form-label">Apellido del Usuario:</label> <input
+						type="text" th:field="*{ApellidoUsuario}" class="form-control"
+						placeholder="Digite su apellido" required="required"
+						pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+"></input>
+				</div>
+				<div class="col-sm-5">
+					<label class="form-label">Correo del Usuario: </label> <input
+						type="email" th:field="*{correoUsuario}" class="form-control"
+						placeholder="Digite su correo" required="required"
+						pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}"></input>
+				</div>
+				<div class="col-sm-5">
+					<label class="form-label">Clave del Usuario:</label> <input
+						type="password" th:field="*{claveUsuario}"
+						placeholder="Digite su clave" class="form-control"
+						required="required"></input>
+				</div>
+				<div class="col-sm-5">
+					<label class="form-label">Telefono del Usuario: </label> <input
+						type="text" th:field="*{Telefono}" class="form-control"
+						placeholder="Digite su telefono" required="required"></input>
+				</div>
+				<div class="col-sm-5">
+					<label class="form-label">Ciudad:</label> <select
+						name="selectCiudad" class="form-control"
+						th:field="*{ciudad.IdCiudad}">
+						<option th:each="Ciudad: ${listaCiudades}"
+							th:value="${Ciudad.IdCiudad}" th:text="${Ciudad.NameCiudad}"
+							th:selected="(${Ciudad.IdCiudad}) == *{ciudad.IdCiudad}"></option>
+					</select>
+				</div>
+				<br>
+				<div class="col-sm-5">
+					<input type="submit" value="Registrar" class="btn btn-dark"></input>
+				</div>
+			</form>
+		</div>
+	</div>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<footer th:replace="master/master :: footer"></footer>
+</body>
+</html>
