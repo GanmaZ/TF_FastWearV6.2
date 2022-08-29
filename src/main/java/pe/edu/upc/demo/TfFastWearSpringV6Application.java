@@ -16,7 +16,6 @@ public class TfFastWearSpringV6Application  {
 	public static void main(String[] args) {
 		SpringApplication.run(TfFastWearSpringV6Application.class, args);
 	}
-
 	
 
 
