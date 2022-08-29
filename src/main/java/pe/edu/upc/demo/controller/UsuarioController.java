@@ -37,7 +37,7 @@ public class UsuarioController {
 		model.addAttribute("usuario", new Usuario());
 		model.addAttribute("listaCiudades", cService.list());
 
-		return "/usuario/frmRegistro";
+		return "usuario/frmRegistro";
 	}
 
 	@GetMapping("/nuevouseradm")
@@ -45,7 +45,7 @@ public class UsuarioController {
 		model.addAttribute("usuario", new Usuario());
 		model.addAttribute("listaCiudades", cService.list());
 
-		return "/usuario/frmRegistroadm";
+		return "usuario/frmRegistroadm";
 	}
 
 	@GetMapping("/nuevoempresa")
@@ -53,7 +53,7 @@ public class UsuarioController {
 		model.addAttribute("usuario", new Usuario());
 		model.addAttribute("listaCiudades", cService.list());
 
-		return "/empresa/RegistrarEmpresa";
+		return "empresa/RegistrarEmpresa";
 	}
 
 	@GetMapping("/nuevoempresaadm")
@@ -61,7 +61,7 @@ public class UsuarioController {
 		model.addAttribute("usuario", new Usuario());
 		model.addAttribute("listaCiudades", cService.list());
 
-		return "/empresa/RegistrarEmpresaadm";
+		return "empresa/RegistrarEmpresaadm";
 	}
 
 	@PostMapping("/guardar")
@@ -85,7 +85,7 @@ public class UsuarioController {
 		} catch (Exception e) {
 			model.addAttribute("error", e.getMessage());
 		}
-		return "/usuario/frmLista";
+		return "usuario/frmLista";
 	}
 
 	@RequestMapping("/lever/{id}")

@@ -50,7 +50,7 @@ public class CiudadController {
 			model.addAttribute("error", e.getMessage());
 		}
 
-		return "/ciudad/frmLista";
+		return "ciudad/frmLista";
 	}
 
 	@RequestMapping("/eliminar")

@@ -32,14 +32,14 @@ public class CategoriaProductoController {
 		model.addAttribute("cp", new CategoriaProducto());
 		model.addAttribute("listaCategorias", cService.list());
 		model.addAttribute("listaProductos", pService.list());
-		return "/categoriaproducto/frmRegistro";
+		return "categoriaproducto/frmRegistro";
 	}
 	
 	@PostMapping("/guardar")
 	public String saveCategoriaProducto(@Valid CategoriaProducto objCP, BindingResult binRes) {
 
 		if (binRes.hasErrors()) {
-			return "/categoriaproducto/frmRegistro";
+			return "categoriaproducto/frmRegistro";
 		} else {
 			cpService.insert(objCP);
 			return "redirect:/categoriaproductos/nuevo";
@@ -54,7 +54,7 @@ public class CategoriaProductoController {
 		} catch (Exception e) {
 			model.addAttribute("error", e.getMessage());
 		}
-		return "/categoriaproducto/frmLista";
+		return "categoriaproducto/frmLista";
 	}
 
 }

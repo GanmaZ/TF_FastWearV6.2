@@ -33,14 +33,14 @@ public class TallaProductoController {
 		model.addAttribute("tp", new TallaProducto());
 		model.addAttribute("listaTallas", tSercice.list());
 		model.addAttribute("listaProductos", pService.list());
-		return "/tallaproducto/frmRegistro";
+		return "tallaproducto/frmRegistro";
 	}
 
 	@PostMapping("/guardar")
 	public String saveTallaProducto(@Valid TallaProducto objTP, BindingResult binRes) {
 
 		if (binRes.hasErrors()) {
-			return "/tallaproducto/frmRegistro";
+			return "tallaproducto/frmRegistro";
 		} else {
 			tpService.insert(objTP);
 			return "redirect:/tallaproductos/nuevo";
@@ -55,7 +55,7 @@ public class TallaProductoController {
 		} catch (Exception e) {
 			model.addAttribute("error", e.getMessage());
 		}
-		return "/tallaproducto/frmLista";
+		return "tallaproducto/frmLista";
 	}
 	
 	@GetMapping("/listarid")
@@ -65,6 +65,6 @@ public class TallaProductoController {
 		} catch (Exception e) {
 			model.addAttribute("error", e.getMessage());
 		}
-		return "/tallaproducto/frmLista";
+		return "tallaproducto/frmLista";
 	}
 }

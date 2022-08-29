@@ -50,14 +50,14 @@ public class TipoProductoController {
 		} catch (Exception e) {
 			model.addAttribute("error", e.getMessage());
 		}
-		return "/tipoproducto/frmLista";
+		return "tipoproducto/frmLista";
 	}
 
 	@GetMapping("/reporte")
 	public String reporteTipoProducto(Map<String, Object> model) {
 		model.put("reporteLista", tipService.reporte());
 		
-		return "/reporte/reportejim";
+		return "reporte/reportejim";
 	}
 
 	@RequestMapping("/eliminar")

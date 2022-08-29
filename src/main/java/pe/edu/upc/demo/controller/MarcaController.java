@@ -48,7 +48,7 @@ public class MarcaController {
 		} catch (Exception e) {
 			model.addAttribute("error", e.getMessage());
 		}
-		return "/marca/frmLista";
+		return "marca/frmLista";
 	}
 
 	@RequestMapping("/eliminar")

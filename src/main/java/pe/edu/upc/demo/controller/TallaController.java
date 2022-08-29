@@ -51,7 +51,7 @@ public class TallaController {
 			model.addAttribute("error", e.getMessage());
 		}
 
-		return "/talla/ListarTalla";
+		return "talla/ListarTalla";
 	}
 
 	@RequestMapping("/eliminar")
@@ -65,7 +65,7 @@ public class TallaController {
 		} catch (Exception e) {
 			model.put("error", e.getMessage());
 		}
-		return "/talla/ListarTalla";
+		return "talla/ListarTalla";
 	}
 
 	@RequestMapping("/irmodificar/{id}")

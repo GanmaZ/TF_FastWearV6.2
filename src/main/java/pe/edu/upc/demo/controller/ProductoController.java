@@ -35,14 +35,14 @@ public class ProductoController {
 		model.addAttribute("listaMarcas", mService.list());
 		model.addAttribute("listaUsuarios", uService.list());
 		model.addAttribute("listaTipoProductos", tpService.list());
-		return "/producto/frmRegistro";
+		return "producto/frmRegistro";
 	}
 	
 	@PostMapping("/guardar")
 	public String saveProducto(@Valid Producto objProducto, BindingResult binRes) {
 		
 		if(binRes.hasErrors()) {
-			return"/producto/frmRegistro";
+			return"producto/frmRegistro";
 		}
 		else {
 			pService.insert(objProducto);
@@ -58,7 +58,7 @@ public class ProductoController {
 		} catch (Exception e) {
 			model.addAttribute("error", e.getMessage());
 		}
-		return "/producto/frmLista";
+		return "producto/frmLista";
 	}
 	
 }
