@@ -27,14 +27,14 @@ public class CompraController {
 	public String newCompra(Model model) {
 		model.addAttribute("compra", new Compra());
 		model.addAttribute("listaUsuarios", uService.list());
-		return "/compra/frmRegistro";
+		return "compra/frmRegistro";
 	}
 	
 	@PostMapping("/guardar")
 	public String saveCompra(@Valid Compra objCompra, BindingResult binRes) {
 		
 		if(binRes.hasErrors()) {
-			return"/compra/frmRegistro";
+			return"compra/frmRegistro";
 		}
 		else {
 			
@@ -50,6 +50,6 @@ public class CompraController {
 		} catch (Exception e) {
 			model.addAttribute("error", e.getMessage());
 		}
-		return "/compra/frmLista";
+		return "compra/frmLista";
 	}
 }

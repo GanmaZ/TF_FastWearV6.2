@@ -45,7 +45,7 @@ public class DetalleCompraController {
 		model.addAttribute("detallecompra", new DetalleCompra());
 		model.addAttribute("listaTallaProductos", tpRepository.findAll());
 
-		return "/detallecompra/frmRegistro";
+		return "detallecompra/frmRegistro";
 	}
 
 	@PostMapping("/guardar")
@@ -65,13 +65,13 @@ public class DetalleCompraController {
 		model.addAttribute("detallecompra", new DetalleCompra());
 		model.addAttribute("listaTallaProductos", tpRepository.findAll());
 
-		return "/detallecompra/frmRegistroextra";
+		return "detallecompra/frmRegistroextra";
 	}
 
 	@PostMapping("/guardarextra")
 	public String saveDetallecompraextra(@Valid DetalleCompra objDetallecompra, BindingResult binRes) {
 		if (binRes.hasErrors()) {
-			return "/detallecompra/frmRegistro";
+			return "detallecompra/frmRegistro";
 		} else {
 			objDetallecompra.setCompra(compra);
 			dService.insertextra(objDetallecompra);
@@ -86,7 +86,7 @@ public class DetalleCompraController {
 		} catch (Exception e) {
 			model.addAttribute("error", e.getMessage());
 		}
-		return "/detallecompra/frmLista";
+		return "detallecompra/frmLista";
 	}
 
 	@RequestMapping("/eliminar")

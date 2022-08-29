@@ -38,13 +38,13 @@ public class PosteoController {
 		model.addAttribute("posteo", new Posteo());
 		model.addAttribute("listaUsuarios", uService.list());
 
-		return "/posteo/frmRegistro";
+		return "posteo/frmRegistro";
 	}
 
 	@PostMapping("/guardar")
 	public String savePosteo(@Valid Posteo objPosteo, BindingResult binRes) {
 		if (binRes.hasErrors()) {
-			return "/posteo/frmRegistro";
+			return "posteo/frmRegistro";
 		} else {
 			pService.insert(objPosteo);
 			return "redirect:/posteos/listar";
@@ -58,7 +58,7 @@ public class PosteoController {
 		} catch (Exception e) {
 			model.addAttribute("error", e.getMessage());
 		}
-		return "/posteo/frmLista";
+		return "posteo/frmLista";
 	}
 
 	@RequestMapping("/reaccionp/{id}")
